@@ -15,7 +15,7 @@ a {
   box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: dark) {
+/* @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
   }
@@ -23,4 +23,17 @@ a {
     color: white;
     background: black;
   }
+} */
+
+.Form {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 30%;
+}
+
+.Detail{
+  display: flex;
+  flex-direction: column;
+  background: pink;
 }

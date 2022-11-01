@@ -1,0 +1,47 @@
+.Details{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    background: brown;
+    border: 2px solid black;
+    margin-left: 350px;
+    width: 1000px;
+}
+/* .Form{
+    border: 2px solid red;
+} */
+.button {
+    background:blue;
+    display: flex;
+    justify-content: center;
+    height: 60px;
+    width: 200px;
+    margin-right: 10px;
+    border-radius: 20px;
+    color: white;
+    font-size: 26px;
+    padding: 14px;
+
+}
+.Admin {
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+    justify-content: center;
+}
+.NextRound {
+    display: flex;
+    justify-content: center;
+    height: 50%;
+    margin-right: 10px;
+}
+
+.butt {
+    display: flex;
+    padding: 50px;
+}
+.Schedule {
+    display: flex;
+    margin-left: 1000px ;
+    justify-content: center;
+}
