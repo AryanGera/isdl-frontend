@@ -43,7 +43,7 @@ const login = () => {
           border={"2px solid black"}
           width="500px"
           height="400px"
-        >
+        >   
 
           <Text fontSize={"50px"} as="b">
             Login
