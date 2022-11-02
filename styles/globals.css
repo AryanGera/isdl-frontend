@@ -37,3 +37,8 @@ a {
   flex-direction: column;
   background: pink;
 }
+
+.Body {
+  background-color: rgb(118, 223, 179);
+  min-height: 1080px;
+}
