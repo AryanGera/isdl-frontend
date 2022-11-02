@@ -58,3 +58,30 @@
 .info {
     text-align: center;
 }
+.Jobcard {
+    padding: 2px;
+    margin: 2px;
+    flex-direction: row;
+    display: flex;
+    border: 2px solid black;
+
+}
+.Filter {
+    display: flex;
+    margin-left: 1750px;
+}
+.pic{
+    display: flex;
+    flex-direction: column;
+}
+.data {
+    display: flex;
+    flex-direction: column;
+}
+.JobD{
+    display: flex;
+}
+.heading {
+    text-align: center;
+    border: 2px solid red;
+}
