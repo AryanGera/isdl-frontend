@@ -1,14 +1,25 @@
-import React from "react";
-import { Select } from "@chakra-ui/react";
+import React, { useEffect, useState } from "react";
+import { Select, Box } from "@chakra-ui/react";
 import regStyles from "../styles/Form.module.css";
+import { useRouter } from "next/router";
 
 const reg = () => {
+  const router = useRouter();
+  
+  const arr = [{"id":"option1", "dep": "Computer Science and Engineering"},
+               {"id":"option2", "dep": "Electronics and Communication Engineering"},
+               {"id":"option3", "dep": "Mechatronics and Mechanical Engineering"},
+               {"id":"option4", "dep": "Communication and Computer Engineering"}
+              ]
+  const obj = arr.find(o => o.id === router.query.dep);
   return (
-    <div>
+    <div className="regStyles.reg">
+      <h3> Name of the Post : {router.query.post} </h3>
+      <h3> Department: {obj.dep} </h3>
       <h3>Personal Details</h3>
       <form className={regStyles.form}>
         <label>Specialization</label>
-        <Select placeholder="Please Select">
+        <Select placeholder="Please Select">  
           <option value="option1">Computer Science and Engineering</option>
           <option value="option2">
             Electronics and Communication Engineering
@@ -86,3 +97,9 @@ const reg = () => {
 };
 
 export default reg;
+
+export async function getServerSideProps(context) {
+  return {
+    props: {}, // will be passed to the page component as props
+  };
+}

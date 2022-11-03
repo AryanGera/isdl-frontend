@@ -1,3 +1,8 @@
 .form {
     background-color: aqua;
 }
+
+.reg {
+    width: 80%;
+    padding: 50px;
+}

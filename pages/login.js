@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
   Box,
   Input,
@@ -10,8 +10,11 @@ import {
   Image
 } from "@chakra-ui/react";
 import loginStyles from "../styles/Login.module.css"
+import Table from "../components/Table"
 
 const login = () => {
+  const [value, setValue] = useState("option0");
+  console.log(value);
   return (
     <div className={loginStyles.login}>
         <Box
@@ -19,21 +22,26 @@ const login = () => {
         borderRadius={"20px"}
         boxShadow={"15px  10px 10px #555555"}
         border={"2px solid black"} 
-        margin = {20}>
-        <Box width="500px"
-        height="400px">
-            <h3> Faculty Recruitment </h3>
+        margin = {10} >
+        <Box width="600px"
+        height="400px" padding="50px">
+            <Text fontSize={"40px"} as="b" align="center">
+            Faculty Recruitment
+          </Text>
             <p>Select Discipline / Broad area :</p>
-            <Select placeholder='Select option'>
-            <option value='option1'>Computer Science and Engineering</option>
+            <Select value={value} onChange={(e) => {
+          setValue(e.target.value);}}>
+            <option value='option0'>Select Option</option>
+            <option value='option1' selected="selected">Computer Science and Engineering</option>
             <option value='option2'>Electronics and Communication Engineering</option>
             <option value='option3'>Mechatronics and Mechanical Engineering</option>
             <option value='option4'>Communication and Computer Engineering</option>
             </Select>
+            {value != "option0" && <Table value={value}/> }
         </Box>
         </Box>
         
-        <Box display="flex" justifyContent={"right"} margin = {20} width = "500px">
+        <Box display="flex" justifyContent={"right"} margin = {10}>
         <Box
           display="flex"
           flexDirection={"column"}
@@ -41,20 +49,21 @@ const login = () => {
           borderRadius={"20px"}
           boxShadow={"15px  10px 10px #555555"}
           border={"2px solid black"}
-          width="500px"
+          width="600px"
           height="400px"
+          padding="50px"
         >   
 
-          <Text fontSize={"50px"} as="b">
+          <Text fontSize={"40px"} as="b" align="center">
             Login
           </Text>
             <FormControl width={"100%"}>
               <FormLabel>Email address</FormLabel>
-              <Input type="email" name="email" />
+              <Input type="email" backgroundColor="white" name="email" />
               <FormLabel>Password</FormLabel>
-              <Input type="password" name="password" />
+              <Input type="password" backgroundColor="white" name="password" />
             </FormControl>
-            <Button border="2px solid black"  width="100%" marginTop="70px" bg={"#ff9800"} type="submit">
+            <Button border="2px solid black"  width="100%" marginTop="50px" bg={"#ff9800"} type="submit">
                 Submit
               </Button>
         </Box>
