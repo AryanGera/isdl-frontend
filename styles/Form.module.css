@@ -1,8 +1,9 @@
 .form {
-    background-color: aqua;
+    
 }
 
 .reg {
-    width: 80%;
-    padding: 50px;
+    width: "500px";
+    padding-left: 400px;
+    display: flex;
 }

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {
   Box,
   Input,
@@ -11,10 +11,11 @@ import {
 } from "@chakra-ui/react";
 import loginStyles from "../styles/Login.module.css"
 import Table from "../components/Table"
+import AuthContext from "../context/AuthContext";
 
 const login = () => {
+  const { loginUser } = useContext(AuthContext);
   const [value, setValue] = useState("option0");
-  console.log(value);
   return (
     <div className={loginStyles.login}>
         <Box
@@ -41,6 +42,7 @@ const login = () => {
         </Box>
         </Box>
         
+        {/* login box */}
         <Box display="flex" justifyContent={"right"} margin = {10}>
         <Box
           display="flex"
@@ -54,6 +56,7 @@ const login = () => {
           padding="50px"
         >   
 
+          <form onSubmit={loginUser} width={"100%"}>
           <Text fontSize={"40px"} as="b" align="center">
             Login
           </Text>
@@ -66,6 +69,7 @@ const login = () => {
             <Button border="2px solid black"  width="100%" marginTop="50px" bg={"#ff9800"} type="submit">
                 Submit
               </Button>
+          </form>
         </Box>
         </Box>
     </div>
