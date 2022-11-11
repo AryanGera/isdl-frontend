@@ -1,13 +1,13 @@
 import Image from "next/image";
 import pic from "../asset/pic.jpg";
 
-export default function Contact() {
+export default function contact() {
   return (
-    <div className="ContactUs">
+    <div className="contactUs">
       <div className="info">
         <h1>CONTACT US</h1>
       </div>
-      <div className="Contact">
+      <div className="contact">
         <p>
           Postal Address: The LNM Institute of Information Technology Rupa ki
           Nangal, Post Sumel, Via Jamdoli Jaipur-302031

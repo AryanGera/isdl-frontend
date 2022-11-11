@@ -65,3 +65,7 @@ a {
 .reg {
   padding-left: 400px;
 }
+
+.FormLabel {
+  display: flex;
+}

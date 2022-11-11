@@ -1,10 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Select, Box } from "@chakra-ui/react";
+import React, { useContext, useEffect, useState } from "react";
+import { Select, Box, Flex, Input, Button, Text } from "@chakra-ui/react";
 import regStyles from "../styles/Form.module.css";
 import { useRouter } from "next/router";
+import AuthContext from "../context/AuthContext";
 
 const reg = () => {
+  const {sendForm, jobs, spezs} = useContext(AuthContext);
   const router = useRouter();
+  const v = [...new Set(jobs.filter(k => (k.dept === parseInt(router.query.dep) && k.post === router.query.post)).map(item => item.spez_Req))];
+  console.log(v);
 
   const arr = [
     { id: "option1", dep: "Computer Science and Engineering" },
@@ -13,113 +17,114 @@ const reg = () => {
     { id: "option4", dep: "Communication and Computer Engineering" },
   ];
 
-  const fields = [
-    { id: "option1", key: "", field: "Artificial Intelligence" },
-    { id: "option1", key: "", field: "Algorithms" },
-    { id: "option1", key: "", field: "Theoretical Computer Science" },
-    { id: "option1", key: "", field: "Systems and Architecture" },
-    { id: "option1", key: "", field: "Natural Language Processing" },
-    { id: "option1", key: "", field: "Cyber Security" },
-    { id: "option2", key: "", field: "Signal Processing" },
-    { id: "option2", key: "", field: "Communication" },
-    { id: "option2", key: "", field: "Embedded Systems" },
-    { id: "option2", key: "", field: "Semiconductor Devices" },
-    { id: "option2", key: "", field: "Wireless communication" },
-    { id: "option3", key: "", field: "Robotics" },
-    { id: "option3", key: "", field: "Automation and Mechatronics" },
-    { id: "option3", key: "", field: "Design" },
-    { id: "option3", key: "", field: "Material Science and Metallurgy" },
-    { id: "option3", key: "", field: "Energy Storage & Energy systems" },
-    { id: "option3", key: "", field: "Fuel Cells and Batteries" },
-    { id: "option4", key: "", field: "Artificial Intelligence" },
-    { id: "option4", key: "", field: "Machine Learning" },
-    {
-      id: "option4",
-      key: "",
-      field: "Cyber-Physical Systems/Internet-of-Things",
-    },
-    { id: "option4", key: "", field: "Signal Processing for Communication" },
-  ];
   const obj = arr.find((o) => o.id === router.query.dep);
   return (
     <div>
-      <Box pl="400px" pr="400px">
+      <Box pl="350px" pr="400px">
       <h3> Name of the Post : {router.query.post} </h3>
       {/* <h3> Department: {obj.dep} </h3> */}
-      <Box width="600px" bg="#f2f2f2" pl="50px" pr="50px">
-      <form method="post" className={regStyles.form}>
-        <h3>Personal Details</h3>
-        <label>Specialization</label>
-        <Select placeholder="Please Select" required>
-          {fields
-            .filter((p) => p.id === router.query.dep)
-            .map((p) => (
-              <option value={p.key}>{p.field}</option>
+      <Box width="700px" bg="#f2f2f2" pl="50px" pr="50px">
+      <form onSubmit={sendForm}  className={regStyles.form}>
+        <Text fontSize={25}>Personal Details</Text>
+        <Flex>Specialization</Flex>
+        <Select placeholder="Please Select" name="spez" required>
+          {v
+            .map(p => (
+              spezs.filter(item => item.id === p).map(val => <option key={val.id}>{val.name}</option>)
             ))}
         </Select>
-        <label>Title</label>
-        <Select placeholder="Please Select" required>
-          <option value="option1">Mr.</option>
-          <option value="option2">Mrs.</option>
-          <option value="option3">Ms.</option>
-          <option value="option4">Dr.</option>
+        <Flex>Title
+        <Select placeholder="Please Select"  name="title" required>
+          <option value="2" key="title1" name="mr">Mr.</option>
+          <option value="1" key="title2" name="mrs">Mrs.</option>
+          <option value="4" key="title3" name="ms">Ms.</option>
+          <option value="3" key="title4" name="dr">Dr.</option>
         </Select>
-        <label>Name</label>
-        <input type="text" id="name" required></input> <br />
-        <label> Date of Birth </label>
-        <input type="date" required></input> <br />
-        <label>Age</label>
-        <input type="text" required></input> <br />
-        <label>Gender</label>
-        <Select placeholder="Please Select">
-          <option value="option1">Male</option>
-          <option value="option2">Female</option>
+        </Flex>
+        <Flex>Name
+        <Input type="text" id="name" name="name" required></Input>
+        </Flex>
+        <Flex> Date of Birth 
+        <Input type="date" name="dob" required></Input>
+        </Flex>
+        <Flex>Age
+        <Input type="text" name="age" required></Input>
+        </Flex>
+        <Flex>Gender
+        <Select placeholder="Please Select" name="gender">
+          <option value="M">Male</option>
+          <option value="F">Female</option>
         </Select>
-        <label>Father's Name</label>
-        <input type="text" required></input> <br />
-        <label>Category</label>
-        <input type="radio" id="st" value="ST" name="cat" />
-        <label for="st">ST</label>
-        <input type="radio" id="sc" value="SC" name="cat" />
-        <label for="sc">SC</label>
-        <input type="radio" id="obc" value="OBC" name="cat"></input>
-        <label for="obc">OBC</label>
-        <input type="radio" id="gen" value="GEN" name="cat"></input>
-        <label for="gen">GEN</label> <br />
-        <label>Nationality</label>
-        <input type="text" required></input> <br />
-        <h3>QUALIFICATION AS PER ELIGIBILITY CRITERIA</h3>
-        <label>Educational Qualification</label> <br />
-        <label> Percentage </label>
-        <input text="number" required /> <br />
-        <label> CGPA </label>
-        <input text="number" required /> <br />
-        <label> No. of Citations </label>
-        <input text="number" /> <br />
-        <label> No. of Publications </label>
-        <input text="number" /> <br />
-        <label> Experience </label>
-        <input text="number" required /> <br />
-        <h3>COMMUNICATION</h3>
-        <label>Postal Address</label>
-        <input type="textarea" required /> <br />
-        <label>Country</label>
-        <input type="text" required /> <br />
-        <label>State</label>
-        <input type="text" required /> <br />
-        <label>City</label>
-        <input type="text" required /> <br />
-        <label>District</label>
-        <input type="text" required /> <br />
-        <label>Pincode</label>
-        <input type="number" required /> <br />
-        <label>Email</label>
-        <input type="email" required /> <br />
-        <label>Password</label>
-        <input type="password" required /> <br />
-        <label>Re-type Password</label>
-        <input type="password" required /> <br />
-        <input type="submit" name="submit" value="Submit" />
+        </Flex>
+        <Flex>Father's Name
+        <Input type="text" name="father" required></Input> 
+        </Flex>
+        <Flex>Mother's Name
+        <Input type="text" name="mother" required></Input> 
+        </Flex>
+        <Flex>Category
+        <Input type="radio" id="st" value="3" name="category" />
+        <Flex>ST</Flex>
+        <Input type="radio" id="sc" value="2" name="category" />
+        <Flex>SC</Flex>
+        <Input type="radio" id="obc" value="4" name="category"></Input>
+        <Flex>OBC</Flex>
+        <Input type="radio" id="gen" value="1" name="category"></Input>
+        <Flex>GEN</Flex> 
+        </Flex>
+        <Flex>Nationality
+        <Input type="text" name="nationality" required></Input> 
+        </Flex>
+        <Text fontSize={25}>QUALIFICATION AS PER ELIGIBILITY CRITERIA</Text>
+        <Flex>Educational Qualification</Flex> 
+        <Flex> Qualifications
+        <Input text="number" name="qualifications" required /> 
+        </Flex>
+        <Flex> CGPA
+        <Input text="number" name="cgpa" required />
+        </Flex>
+        <Flex> No. of Citations
+        <Input text="number" name="citations" />
+        </Flex>
+        <Flex> No. of Publications
+        <Input text="number" name="publications" />
+        </Flex>
+        <Flex> Experience
+        <Input text="number" name="experiance" required />
+        </Flex>
+        <Text fontSize={25}>COMMUNICATION</Text>
+        <Flex>Postal Address 
+        <Input type="textarea" name="postal" required />
+        </Flex>
+        <Flex>Country
+        <Input type="text" name="country" required /> 
+        </Flex>
+        <Flex>State 
+        <Input type="text" name="state" required /> 
+        </Flex>
+        <Flex>City
+        <Input type="text" name="city" required />
+        </Flex>
+        <Flex>District
+        <Input type="text" name="district" required />
+        </Flex>
+        <Flex>Pincode
+        <Input type="number" name="pincode" required />
+        </Flex>
+        <Flex>Email
+        <Input type="email" name="email" required /> 
+        </Flex>
+        <Flex>Mobile No
+        <Input type="text" name="mob_num" pattern="[1-9]{1}[0-9]{9}" required /> 
+        </Flex>
+        <Flex>Password
+        <Input type="password" name="password" required />
+        </Flex>
+        <Flex>Re-type Password
+        <Input type="password" name="password" required />
+        </Flex>
+        <Button border="2px solid black"  width="100%" marginTop="70px" bg={"#2cc0f5"} type="submit"> Submit 
+        </Button>
       </form>
       </Box>
       </Box>
