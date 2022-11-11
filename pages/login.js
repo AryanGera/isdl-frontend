@@ -15,9 +15,9 @@ import AuthContext from "../context/AuthContext";
 
 const arr =
   { 1: "Computer Science and Engineering",
-  2: "Electronics and Communication Engineering",
-  3: "Mechatronics and Mechanical Engineering", 
-  4: "Communication and Computer Engineering" }
+  2: "Communication and Computer Engineering",
+  3: "Electronics and Communication Engineering",
+  4: "Mechatronics and Mechanical Engineering" }
 
 const login = () => {
   const { loginUser, preReq, jobs} = useContext(AuthContext);

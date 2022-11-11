@@ -7,7 +7,7 @@ import AuthContext from "../context/AuthContext";
 const reg = () => {
   const {sendForm, jobs, spezs} = useContext(AuthContext);
   const router = useRouter();
-  const v = [...new Set(jobs.filter(k => (k.dept === parseInt(router.query.dep) && k.post === router.query.post)).map(item => item.spez_Req))];
+  const v = [...new Set(jobs.filter(k => (k.dept === parseInt(router.query.dep) && k.post === router.query.post)))];
   console.log(v);
 
   const arr = [
@@ -30,7 +30,7 @@ const reg = () => {
         <Select placeholder="Please Select" name="spez" required>
           {v
             .map(p => (
-              spezs.filter(item => item.id === p).map(val => <option key={val.id}>{val.name}</option>)
+              spezs.filter(item => item.id === p.spez_Req).map(val => <option key={val.id}>{val.name}</option>)
             ))}
         </Select>
         <Flex>Title

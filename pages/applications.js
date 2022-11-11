@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import AuthContext from '../context/AuthContext';
 import SmallCard from '../components/SmallCard';
 import { useRouter } from 'next/router';
-import { Box, Text } from '@chakra-ui/react';
+import { Box, Grid, Text } from '@chakra-ui/react';
 
 const applications = () => {
     const router = useRouter();
@@ -16,7 +16,6 @@ const applications = () => {
     let {User, Jwt} = useContext(AuthContext);
     if(User && Jwt) {
         if(apps) {
-            console.log(apps);
             return (
               <Box
             display="flex"
@@ -26,9 +25,9 @@ const applications = () => {
             height="100%"
             padding="50px"
           >
-             <Text fontWeight="600" fontSize="22" margin="10px"> Name: {User.name}  </Text>
+             <Text fontWeight="bold" fontSize="26" margin="10px" textAlign="center"> Applications  </Text>
             <Box
-              display="flex"
+              display="grid"
               height="55%"
               minHeight="200px"
               width="100%"
@@ -37,12 +36,13 @@ const applications = () => {
               borderRadius="20px"
               marginBottom="50px"
             >
-                console.log(apps);
+            <Grid templateColumns='repeat(3, 1fr)' spacing="10px">
               {apps.map((app) => {
                 {
                   return <SmallCard key={app.id} name={User.name} app={app}/>;
                 }
               })}
+            </Grid>
             </Box>
             </Box>
             );

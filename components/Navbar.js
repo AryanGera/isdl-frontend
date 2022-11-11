@@ -13,7 +13,7 @@ const Navbar = () => {
     return (
       <Box  bg="#2cc0f5"  height = "80px" padding={"10px"} display ="flex" flexDirection={"row"} justifyContent={"center"} paddingRight= "50px" paddingLeft = "50px">
         <Box display="flex">
-        <Text fontSize={"40"} as='b' fontWeight="800" align="center">The LNM Institute of Technology </Text>
+        <Text fontSize={"40"} as='b' fontWeight="800">The LNM Institute of Technology </Text>
         </Box>
         <Box>
       <Button  border="2px solid black"  margin="10px" paddingTop = '5px'colorScheme={"orange"} onClick={logout} >LOGOUT</Button>
