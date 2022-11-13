@@ -15,9 +15,14 @@ export const AuthProvider = ({children}) =>{
     const [spezs, setSpezs] = useState(null);
     const router = useRouter ();
     useEffect(() => {
-        if(localStorage && localStorage.getItem('authTokens') && localStorage.getItem('jobs') && localStorage.getItem('spezs')){
+        if(localStorage && (localStorage.getItem('authTokens'))){
             setAuthToken(JSON.parse(localStorage.getItem('authTokens')))
             setUser(jwt_decode(localStorage.getItem('authTokens')))
+        }
+      }, []);
+
+      useEffect(() => {
+        if(localStorage && localStorage.getItem('jobs') && localStorage.getItem('spezs')){
             setJobs(JSON.parse(localStorage.getItem('jobs')))
             setSpezs(JSON.parse(localStorage.getItem('spezs')))
         }
@@ -80,9 +85,10 @@ export const AuthProvider = ({children}) =>{
     let sendForm = async (e) => {
       console.log("Form Submitted");
       e.preventDefault();
+      const jobid = localStorage.getItem('jobid');
       const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries());
-        Object.assign(data, {job: "1"});
+        Object.assign(data, {job: jobid});
         console.log(data);
         let response = await fetch("https://recruitsys.herokuapp.com/registerApp", {
           method: "POST",
@@ -95,7 +101,8 @@ export const AuthProvider = ({children}) =>{
         // let data = await response.json()
         console.log(response);
         if (response.status === 200) {
-          router.push("/dashboard");
+          alert('Registered Successfully');
+          router.push("/login");
         } else {
             console.log("404");
           alert("Something went wrong !");

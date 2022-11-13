@@ -43,6 +43,9 @@ const applications = () => {
                 }
               })}
             </Grid>
+            {
+              apps.length === 0 &&  <Text fontWeight="bold" fontSize="26" margin="10px" textAlign="center"> No Applicants  </Text>
+            }
             </Box>
             </Box>
             );

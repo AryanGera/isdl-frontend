@@ -1,6 +1,6 @@
 import { Box, Button, Text } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import AuthContext from '../context/AuthContext'
 
 async function deleteJob(jwt,id) {
@@ -36,16 +36,19 @@ const JobCard = ({job}) => {
             query: {id: job.id}
         });
     }
-    let {User, Jwt, spezs} = useContext(AuthContext);
+    let {User, Jwt, spezs, preReq} = useContext(AuthContext);
     let spez = spezs.filter(item => item.id === job.spez_Req);
+    useEffect(() => {
+      preReq();
+    },[deleteJob])
     if(job) {
         return (
-            <Box display="flex"  border="1px solid black" bg="#2cc0f5" borderRadius="15px" margin="5px">
-                <Text fontWeight="600" fontSize="15" margin="10px"> {job.post} </Text>
-                <Text fontWeight="600" fontSize="15" margin="10px"> {spez[0].name} </Text>
-                <Button height="22px"  width="10%" margin="10px" bg={"#4BB543"} onClick={() => openApp()}> Open 
+            <Box display="flex"  border="1px solid black" bg="#2cc0f5" borderRadius="0.9375rem" margin="0.3125rem">
+                <Text fontWeight="600" fontSize="15" margin="0.625rem" w="30%"> {job.post} </Text>
+                <Text fontWeight="600" fontSize="15" margin="0.625rem" w="30%"> {spez[0].name} </Text>
+                <Button height="1.375rem"  width="10%" margin="0.625rem" bg={"#4BB543"} onClick={() => openApp()}> Open 
                 </Button>
-                <Button height="22px"  width="10%" margin="10px"  bg={"#d11a2a"} onClick={() => deleteJob(Jwt,job.id)}> Close 
+                <Button height="1.375rem"  width="10%" margin="0.625rem"  bg={"#d11a2a"} onClick={() => deleteJob(Jwt,job.id)}> Close 
                 </Button>
             </Box>
           )

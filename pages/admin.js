@@ -7,8 +7,16 @@ import AuthContext from "../context/AuthContext";
 const admin = () => {
   const router = useRouter();
   const [dep, setDep] = useState(null);
+  const [post,setPost] = useState(null);
   const {User, Jwt, jobs, spezs, createJob } = useContext(AuthContext);
   let options = null;
+  let arr = [];
+  let posts = null;
+
+  const addPost = (e) => {
+    e.preventDefault();
+    setPost(<option>{e.target.post.value}</option>);
+  }
 
   if(dep) {
     options = spezs.filter(p => p.dept === parseInt(dep))
@@ -57,7 +65,7 @@ const admin = () => {
     {User.isMec===true && <Box padding="10px">
     <Text fontWeight="600" fontSize="20" margin="0px 20px">MEC Department</Text>
     {jobs
-            .filter(item => item.dept === 1)
+            .filter(item => item.dept === 4)
             .map(job => (
               <JobCard key={job.id} job={job} />
             ))}
@@ -90,6 +98,7 @@ const admin = () => {
             <option value="Assisant Professor" name="cse">Assisant Professor</option>
             <option value="Associate Professor" name="ece">Associate Professor</option>
             <option value="Professor" name="me">Professor</option>
+            {post}
           </Select></Box>
           </Flex>
           <Flex m="20px"><Text fontWeight="600" fontSize="20">Specialization</Text>
@@ -104,10 +113,16 @@ const admin = () => {
           </Select></Box>
           </Flex>
           <Flex m="20px"><Text fontWeight="600" fontSize="20">Min. CGPA Required</Text>
-          <Box w="300px" margin="0px 25px"><Input type="number" name="cgpa_Req" required></Input></Box>
+          <Box w="300px" margin="0px 25px"><Input type="number" min="0" step="any" name="cgpa_Req" required></Input></Box>
           </Flex>
-          <Button border="2px solid black"  width="80%" margin="50px 70px" bg={"#2cc0f5"} type="submit"> Create 
+          <Button border="2px solid black"  width="80%" margin="30px 70px" bg={"#2cc0f5"} type="submit"> Create 
           </Button>
+          </form>
+          <form onSubmit={addPost}>
+          <Flex m='20px'><Text fontWeight="600" fontSize="20">Add Post</Text>
+          <Box w="200px" ml='130px' mr='40px'><Input type="text" name="post"></Input></Box>
+          <Button border="2px solid black"  width="20%" bg={"#2cc0f5"} type='submit'> Add</Button>
+          </Flex>
           </form>
         </Box>
       </Box>

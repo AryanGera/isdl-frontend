@@ -3,6 +3,8 @@ import React, { useContext, useState } from 'react'
 import AuthContext from '../context/AuthContext';
 
 function UserCard ({post, name}) {
+  let k = null;
+  if(post.schedule) k = new Date(post.schedule);
     let {jobs, spezs} = useContext(AuthContext);
     let arr = [
       { id: 1, dep: "Computer Science and Engineering" },
@@ -26,7 +28,8 @@ function UserCard ({post, name}) {
                 <Text fontWeight="600" fontSize="22" margin="10px">Department: {randi[0].dep} </Text>
                 <Text fontWeight="600" fontSize="22" margin="10px">Post: {jobs[0].post} </Text>
                 <Text fontWeight="600" fontSize="22" margin="10px">Round No: {post.roundNum}  </Text>
-                <Text fontWeight="600" fontSize="22" margin="10px">Schedule: {post.schedule} </Text>
+                {k != null && <Box m="10px"><Text fontWeight="600" fontSize="22">Schedule: Date {k.toLocaleDateString()} </Text> 
+                <Text fontWeight="600" fontSize="22" ml="6.5rem">Time: {k.toLocaleTimeString()} </Text></Box>}
             </Box>
         </Box>
       )

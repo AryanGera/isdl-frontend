@@ -20,10 +20,11 @@ const arr =
   4: "Mechatronics and Mechanical Engineering" }
 
 const login = () => {
-  const { loginUser, preReq, jobs} = useContext(AuthContext);
+  const { loginUser, preReq, jobs, logout} = useContext(AuthContext);
   const [value,setValue] = useState('default');
   const [unique, setUnique] = useState(null);
   useEffect(()=> {
+    logout();
     preReq();
   },[]);
   useEffect(()=> {
