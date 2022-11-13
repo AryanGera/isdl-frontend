@@ -24,10 +24,10 @@ function UserCard ({post, name}) {
         margin="20px"
         border="2px solid black">
             <Box width="100%" height="100%" bg="#2cc0f5" borderRadius="20px" padding="30px 10px">
-                <Text fontWeight="600" fontSize="22" margin="10px">Specialization: {spezs[0].name}  </Text>
-                <Text fontWeight="600" fontSize="22" margin="10px">Department: {randi[0].dep} </Text>
-                <Text fontWeight="600" fontSize="22" margin="10px">Post: {jobs[0].post} </Text>
-                <Text fontWeight="600" fontSize="22" margin="10px">Round No: {post.roundNum}  </Text>
+                <Text fontWeight="600" fontSize="22" margin="0.625rem">Department: {randi[0].dep} </Text>
+                <Text fontWeight="600" fontSize="22" margin="0.625rem">Specialization: {spezs[0].name}  </Text>
+                <Text fontWeight="600" fontSize="22" margin="0.625rem">Post: {jobs[0].post} </Text>
+                <Text fontWeight="600" fontSize="22" margin="0.625rem">Round No: {post.roundNum}  </Text>
                 {k != null && <Box m="10px"><Text fontWeight="600" fontSize="22">Schedule: Date {k.toLocaleDateString()} </Text> 
                 <Text fontWeight="600" fontSize="22" ml="6.5rem">Time: {k.toLocaleTimeString()} </Text></Box>}
             </Box>

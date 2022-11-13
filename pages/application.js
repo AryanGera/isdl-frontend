@@ -16,6 +16,7 @@ const application = () => {
   const {spezs, Jwt} = useContext(AuthContext);
   let [app,setApp] = useState(null);
   const [cnt, setCnt] = useState(null);
+  const [flag, setFlag] = useState(true);
   async function nextRound(jwt,id) {
     const response = await fetch(
         "https://recruitsys.herokuapp.com/nextRound?" +
@@ -106,8 +107,11 @@ const application = () => {
           </Box>
           <Box border="1px solid black"  borderRadius="20px" m="30px 10px 0px 10px" h="45%" w="100%" p="20px">
           <form>
-          <Text fontWeight="600" fontSize="22" margin="10px"> Meet Link </Text>
-          <input type="text" placeholder='meet.google.com/scy-onxx-kye' m="10px" />
+          <Text fontWeight="600" fontSize="22" margin="10px" > Meet Link </Text>
+          <Box display="flex">
+          <input type="text" placeholder='meet.google.com/scy-onxx-kye' m="10px" id="meet" readOnly={flag}/>
+          <Button border="2px solid black"  width="30%" margin="10px 40px" bg={"#2cc0f5"} onClick={() => setFlag(false)}> Edit </Button>
+          </Box>
           <Button border="2px solid black"  width="80%" margin="40px 45px" bg={"#2cc0f5"} type="submit"> Send Email </Button>
           </form>
           </Box>
