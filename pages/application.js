@@ -59,6 +59,7 @@ const Application = () => {
       );
       console.log(response);
       if(response.status === 200) {
+        alert('Scheduled');
         console.log('Scheduled');
       } else {
         console.log('Something went wrong');

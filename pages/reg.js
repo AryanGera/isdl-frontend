@@ -146,16 +146,16 @@ const Reg = () => {
           <Box w='60%' ml='9.0625rem'><Input type="text" placeholder="Enter District" size="sm" name="district" required /></Box>
           </Flex>
           <Flex m='5px'>Pincode
-          <Box w='60%' ml='8.4375rem'><Input type="text" pattern="[1-9]{1}[0-9]{5}" placeholder="Enter Pincode" size="sm" name="pincode" required /></Box>
+          <Box w='60%' ml='8.4375rem'><Input type="text" pattern="[1-9]{1}[0-9]{5}" placeholder="Enter Pincode" size="sm" name="pincode" maxlength="6" required /></Box>
           </Flex>
           <Flex m='5px'>Email
           <Box w='60%' ml='153px'><Input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter Email" size="sm" name="email" required /> </Box>
           </Flex>
           <Flex m='5px'>Mobile No
-          <Box w='60%' ml='120px'><Input type="text" placeholder="Enter Mobile.No" size="sm" name="mob_num" pattern="[1-9]{1}[0-9]{9}" required /> </Box>
+          <Box w='60%' ml='120px'><Input type="text" placeholder="Enter Mobile.No" size="sm" name="mob_num" pattern="[1-9]{1}[0-9]{9}" maxlength="10" required /> </Box>
           </Flex>
           <Flex m='5px'>Password
-          <Box w='60%' ml='7.625rem'><Input type="password" placeholder="Enter Password" max="15" id='pass' size="sm" name="password" required onChange={() => setPass(document.getElementById('pass').value)} /></Box>
+          <Box w='60%' ml='7.625rem'><Input type="password" placeholder="Enter Password" maxlength="20" id='pass' size="sm" name="password" required onChange={() => setPass(document.getElementById('pass').value)} /></Box>
           </Flex>
           <Flex m='5px'>Re-type Password
           <Box w='60%' ml='3.875rem'><Input type="password" id='retype' placeholder="Re-type Password" size="sm" name="password" required onChange={(e) => checkPass(e)} />

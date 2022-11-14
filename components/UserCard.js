@@ -1,16 +1,19 @@
 import { Box, Text } from '@chakra-ui/react'
 import React, { useContext, useState } from 'react'
 import AuthContext from '../context/AuthContext';
+import moment from 'moment';
 
 function UserCard ({post, name}) {
-  let k = null;
-  if(post.schedule) k = new Date(post.schedule);
+  let k = post.schedule;
+  let d = new Date(k).getDate();
+  let mn = new Date(k).getMonth();
+  let yr = new Date(k).getFullYear();
     let {jobs, spezs} = useContext(AuthContext);
     let arr = [
       { id: 1, dep: "Computer Science and Engineering" },
-      { id: 2, dep: "Electronics and Communication Engineering" },
-      { id: 3, dep: "Mechatronics and Mechanical Engineering" },
-      { id: 4, dep: "Communication and Computer Engineering" },
+      { id: 3, dep: "Electronics and Communication Engineering" },
+      { id: 4, dep: "Mechatronics and Mechanical Engineering" },
+      { id: 2, dep: "Communication and Computer Engineering" },
     ];
 
     jobs = jobs.filter(item => item.id === post.job);
@@ -28,8 +31,8 @@ function UserCard ({post, name}) {
                 <Text fontWeight="600" fontSize="22" margin="0.625rem">Specialization: {spezs[0].name}  </Text>
                 <Text fontWeight="600" fontSize="22" margin="0.625rem">Post: {jobs[0].post} </Text>
                 <Text fontWeight="600" fontSize="22" margin="0.625rem">Round No: {post.roundNum}  </Text>
-                {k != null && <Box m="10px"><Text fontWeight="600" fontSize="22">Schedule: Date {k.toLocaleDateString()} </Text> 
-                <Text fontWeight="600" fontSize="22" ml="6.5rem">Time: {k.toLocaleTimeString()} </Text></Box>}
+                {k != null && <Box m="10px"><Text fontWeight="600" fontSize="22">Schedule: Date: {d+'/'+mn+'/'+yr} </Text> 
+                <Text fontWeight="600" fontSize="22" ml="6.5rem">Time: {k.split('T')[1].split('Z')[0]} </Text></Box>}
             </Box>
         </Box>
       )

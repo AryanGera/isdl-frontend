@@ -8,8 +8,6 @@ const Admin = () => {
   const [post,setPost] = useState(null);
   const {User, Jwt, jobs, spezs, createJob } = useContext(AuthContext);
   let options = null;
-  let arr = [];
-  let posts = null;
 
   const addPost = (e) => {
     e.preventDefault();
