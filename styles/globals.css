@@ -61,3 +61,11 @@ a {
   height: 50px;
   border: 1px solid #ddd;
 }
+
+.reg {
+  padding-left: 400px;
+}
+
+.FormLabel {
+  display: flex;
+}

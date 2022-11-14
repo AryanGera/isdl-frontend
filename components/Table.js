@@ -1,9 +1,13 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
+import AuthContext from '../context/AuthContext'
 
 const Table = ({value}) => {
+    let {jobs} = useContext(AuthContext);
     const router = useRouter();
+    const posts = [...new Set(jobs.filter(k => k.dept === parseInt(value)).map(item => item.post))]
+    console.log(posts);
     const column = [
         {heading: 'Post'},
         {heading: 'Apply'},
@@ -17,21 +21,13 @@ const Table = ({value}) => {
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>Assisant Professor</td>
-                <td><input type="image" src="/btn.png" onClick = {() => {router.push({pathname: '/reg',query: {post: 'Assisant Professor', dep: value}})}} height={40} width={40}/></td>
-                <td><input type="image" src="./pdf.png" height={40} width={40}/></td>
-            </tr>
-            {value != "option3" && <tr>
-                <td>Associate Professor</td>
-                <td><input type="image" src="/btn.png" onClick = {() => {router.push({pathname: '/reg',query: {post: 'Associate Professor', dep: value}})}} height={40} width={40}/></td>
-                <td><input type="image" src="./pdf.png" height={40} width={40}/></td>
-            </tr>}
-            <tr>
-                <td>Professor</td>
-                <td><input type="image" src="/btn.png" onClick = {() => {router.push({pathname: '/reg',query: {post: 'Professor', dep: value}})}} height={40} width={40}/></td>
-                <td><input type="image" src="./pdf.png" height={40} width={40}/></td>
-            </tr>
+            {
+                posts.map(post => (<tr>
+                    <td>{post}</td>
+                    <td><input type="image" src="/btn.png" onClick = {() => {router.push({pathname: '/reg',query: {post: post, dep: value}})}} height={40} width={40}/></td>
+                    <td><input type="image" src="./pdf.png" height={40} width={40}/></td>
+                </tr>))
+            }
         </tbody>
     </table>
   )
