@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Candidates from "./posts/Candidates";
+import Login from "./login"
 
 export default function Home() {
-  return <Candidates />;
+  return <Login />;
 }

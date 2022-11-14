@@ -1,11 +1,9 @@
 import { Box, Button, Flex, Input, Select, Text } from "@chakra-ui/react";
-import { useRouter } from "next/router";
 import React, { useContext, useState } from "react";
 import JobCard from "../components/JobCard";
 import AuthContext from "../context/AuthContext";
 
-const admin = () => {
-  const router = useRouter();
+const Admin = () => {
   const [dep, setDep] = useState(null);
   const [post,setPost] = useState(null);
   const {User, Jwt, jobs, spezs, createJob } = useContext(AuthContext);
@@ -20,7 +18,7 @@ const admin = () => {
 
   if(dep) {
     options = spezs.filter(p => p.dept === parseInt(dep))
-            .map((p) => <option value={p.id}>{p.name}</option>)
+            .map((p) => <option key={p.id} value={p.id}>{p.name}</option>)
             console.log(options);
   }
   
@@ -132,4 +130,4 @@ const admin = () => {
   }
 };
 
-export default admin;
+export default Admin;
