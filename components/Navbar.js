@@ -11,20 +11,20 @@ const Navbar = () => {
   const router = useRouter();
   if (User) {
     return (
-      <Box  bg="#2cc0f5"  height = "80px" padding={"10px"} display ="flex" flexDirection={"row"} justifyContent={"center"} paddingRight= "50px" paddingLeft = "50px">
+      <Box  bg="#2cc0f5"  height = "5rem" padding="0.625rem" display ="flex" flexDirection={"row"} justifyContent={"center"} paddingRight= "3.125rem" paddingLeft = "3.125rem">
         <Box display="flex">
         <Text fontSize={"40"} as='b' fontWeight="800">The LNM Institute of Technology </Text>
         </Box>
         <Box>
-      <Button  border="2px solid black"  margin="10px" paddingTop = '5px'colorScheme={"orange"} onClick={logout} >LOGOUT</Button>
+      <Button  border="2px solid black"  margin="0.625rem" paddingTop = '0.3125rem'colorScheme={"orange"} onClick={logout} >LOGOUT</Button>
       </Box>
     </Box>
     );
   } else {
     return (
-      <Box  bg="#2cc0f5"  height = "80px" padding={"10px"} display ="flex" flexDirection={"row"} justifyContent={"center"} paddingRight= "50px" paddingLeft = "50px">
+      <Box  bg="#2cc0f5"  height = "5rem" padding="0.625rem" display ="flex" flexDirection="row" justifyContent="center" paddingRight= "3.125rem" paddingLeft = "3.125rem">
         <Box display="flex">
-        <Text fontSize={"40"} as='b' fontWeight="1000" >The LNM Institute of Technology </Text>
+        <Text fontSize="40" as='b' fontWeight="1000" >The LNM Institute of Technology </Text>
         </Box>
       </Box>
     );
