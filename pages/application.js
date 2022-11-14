@@ -12,7 +12,7 @@ const qual = [
   { id: "7", name: "PhD"}
 ]
 
-const application = () => {
+const Application = () => {
   const {spezs, Jwt} = useContext(AuthContext);
   let [app,setApp] = useState(null);
   const [cnt, setCnt] = useState(null);
@@ -123,4 +123,4 @@ const application = () => {
   }
 }
 
-export default application
+export default Application

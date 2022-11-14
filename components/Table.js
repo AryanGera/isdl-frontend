@@ -17,12 +17,12 @@ const Table = ({value}) => {
     <table>
         <thead>
             <tr>
-            {column.map((item,idx) => <TableHead item={item} />)}
+            {column.map((item,idx) => <TableHead key={idx} item={item} />)}
             </tr>
         </thead>
         <tbody>
             {
-                posts.map(post => (<tr>
+                posts.map(post => (<tr key={post.id}>
                     <td>{post}</td>
                     <td><input type="image" src="/btn.png" onClick = {() => {router.push({pathname: '/reg',query: {post: post, dep: value}})}} height={40} width={40}/></td>
                     <td><input type="image" src="./pdf.png" height={40} width={40}/></td>

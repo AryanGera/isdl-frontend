@@ -19,7 +19,7 @@ const arr =
   3: "Electronics and Communication Engineering",
   4: "Mechatronics and Mechanical Engineering" }
 
-const login = () => {
+const Login = () => {
   const { loginUser, preReq, jobs, logout} = useContext(AuthContext);
   const [value,setValue] = useState('default');
   const [unique, setUnique] = useState(null);
@@ -93,4 +93,4 @@ const login = () => {
   }
 }
 
-export default login
+export default Login

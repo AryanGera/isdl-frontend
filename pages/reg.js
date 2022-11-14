@@ -4,7 +4,7 @@ import regStyles from "../styles/Form.module.css";
 import { useRouter } from "next/router";
 import AuthContext from "../context/AuthContext";
 
-const reg = () => {
+const Reg = () => {
   const {sendForm, jobs, spezs} = useContext(AuthContext);
   const [pass,setPass] = useState(null);
   const [retype, setRetype] = useState(null);
@@ -58,7 +58,7 @@ const reg = () => {
           <Select placeholder="Please Select" name="spez" size="sm" onChange={(e) => nhp(e)} required>
             {v
               .map(p => (
-                spezs.filter(item => item.id === p.spez_Req).map(val => <option value={val.id}>{val.name}</option>)
+                spezs.filter(item => item.id === p.spez_Req).map(val => <option key={val.id} value={val.id}>{val.name}</option>)
               ))}
           </Select> </Box> </Flex>
           <Flex m='5px'>Title
@@ -84,10 +84,10 @@ const reg = () => {
             <option value="F">Female</option>
           </Select></Box>
           </Flex>
-          <Flex m='5px'>Father's Name
+          <Flex m='5px'>Father&#39;s Name
           <Box w='60%' ml='5rem'><Input type="text" placeholder="Father's Name" size="sm" name="father" required></Input></Box>
           </Flex>
-          <Flex m='5px'>Mother's Name
+          <Flex m='5px'>Mother&#39;s Name
           <Box w='60%' ml='4.8125rem'><Input type="text" placeholder="Mother's Name" size="sm" name="mother" required></Input></Box>
           </Flex>
           <Flex m='5px'>Category
@@ -109,7 +109,7 @@ const reg = () => {
           <Flex m='5px'>Educational Qualifications
           <Box w='60%' ml='3.125rem'><Select size="sm" placeholder="Please Select" name="qualifications" required>
             {
-              qual.map(k => <option value={k.id}>{k.name}</option>)
+              qual.map(k => <option key={k.id} value={k.id}>{k.name}</option>)
             }
           </Select></Box>
           </Flex>
@@ -172,4 +172,4 @@ const reg = () => {
   }
 };
 
-export default reg;
+export default Reg;

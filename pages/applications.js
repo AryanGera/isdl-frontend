@@ -4,7 +4,7 @@ import SmallCard from '../components/SmallCard';
 import { useRouter } from 'next/router';
 import { Box, Grid, Text } from '@chakra-ui/react';
 
-const applications = () => {
+const Applications = () => {
     const router = useRouter();
     const [apps, setApps] = useState(null);
     const [id, setId] = useState(router.query.id);
@@ -76,4 +76,4 @@ const applications = () => {
     }
 }
 
-export default applications
+export default Applications

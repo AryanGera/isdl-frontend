@@ -4,7 +4,7 @@ import UserCard from '../components/UserCard';
 import { Box, Text } from '@chakra-ui/react';
 import jwt_decode from 'jwt-decode'
 
-function dashboard() {
+function Dashboard() {
     const { User, Jwt} = useContext(AuthContext);
     const [posts,setPosts] = useState(null);
     if(User && Jwt) {
@@ -60,4 +60,4 @@ function dashboard() {
     }
 }
 
-export default dashboard;
+export default Dashboard;
