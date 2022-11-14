@@ -149,7 +149,7 @@ const Reg = () => {
           <Box w='60%' ml='8.4375rem'><Input type="number" pattern="[1-9]{1}[0-9]{5}" placeholder="Enter Pincode" size="sm" name="pincode" required /></Box>
           </Flex>
           <Flex m='5px'>Email
-          <Box w='60%' ml='153px'><Input type="email" pattern="/^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/" placeholder="Enter Email" size="sm" name="email" required /> </Box>
+          <Box w='60%' ml='153px'><Input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter Email" size="sm" name="email" required /> </Box>
           </Flex>
           <Flex m='5px'>Mobile No
           <Box w='60%' ml='120px'><Input type="text" placeholder="Enter Mobile.No" size="sm" name="mob_num" pattern="[1-9]{1}[0-9]{9}" required /> </Box>
