@@ -9,7 +9,6 @@ import {
   Select,
   Image
 } from "@chakra-ui/react";
-import loginStyles from "../styles/Login.module.css"
 import Table from "../components/Table"
 import AuthContext from "../context/AuthContext";
 
@@ -33,16 +32,15 @@ const Login = () => {
   },[jobs]);
   if(unique) {
     return (
-      <div className={loginStyles.login}>
+      <Box display="flex" p='3.125rem 5.625rem'>
           <Box
           bg="#2cc0f5"
           borderRadius={"20px"}
           boxShadow={"15px  10px 10px #555555"}
           border={"2px solid black"} 
-          margin = {10} >
-          <Box width="600px"
-          height="400px" padding="50px">
-              <Text fontSize={"40px"} as="b" align="center">
+          p='3.125rem' m='1.875rem'
+          w="37.5rem" h='28.125rem'>
+              <Text fontSize={"2.5rem"} as="b" align="center">
               Faculty Recruitment
             </Text>
               <p>Select Discipline / Broad area :</p>
@@ -55,11 +53,8 @@ const Login = () => {
             ))}
               </Select>
               {value != 'default' && <Table value={value}/> }
-          </Box>
-          </Box>
-          
+          </Box>          
           {/* login box */}
-          <Box display="flex" justifyContent={"right"} margin = {10}>
           <Box
             display="flex"
             flexDirection={"column"}
@@ -67,13 +62,12 @@ const Login = () => {
             borderRadius={"20px"}
             boxShadow={"15px  10px 10px #555555"}
             border={"2px solid black"}
-            width="600px"
-            height="400px"
-            padding="50px"
+            w="37.5rem" h='28.125rem' m="1.875rem"
+            padding="3.125rem"
           >   
   
             <form onSubmit={loginUser} width={"100%"}>
-            <Text fontSize={"40px"} as="b" align="center">
+            <Text fontSize={"2.5rem"} as="b" align="center">
               Login
             </Text>
               <FormControl width={"100%"}>
@@ -87,8 +81,7 @@ const Login = () => {
                 </Button>
             </form>
           </Box>
-          </Box>
-      </div>
+      </Box>
     )
   }
 }
