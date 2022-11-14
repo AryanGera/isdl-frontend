@@ -25,7 +25,7 @@ const Table = ({value}) => {
                 posts.map(post => (<tr key={post.id}>
                     <td>{post}</td>
                     <td><input type="image" src="/btn.png" onClick = {() => {router.push({pathname: '/reg',query: {post: post, dep: value}})}} height={40} width={40}/></td>
-                    <td><input type="image" src="./pdf.png" height={40} width={40}/></td>
+                    <td><input type="image" src="./pdf.png" onClick={() => router.push('./pdf')} height={40} width={40}/></td>
                 </tr>))
             }
         </tbody>
