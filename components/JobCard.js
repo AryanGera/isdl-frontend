@@ -3,30 +3,6 @@ import { useRouter } from 'next/router';
 import React, { useContext, useEffect } from 'react'
 import AuthContext from '../context/AuthContext'
 
-async function deleteJob(jwt,id) {
-    const response = await fetch(
-        "https://recruitsys.herokuapp.com/deleteJob?" +
-          new URLSearchParams({
-            id: id,
-            jwt: jwt,
-          }),
-        {
-          method: "POST",
-          headers:{
-            'Content-Type' : 'application/json',
-        },
-        credentials: 'include',
-        body:JSON.stringify({'id': id})
-        }
-      );
-      console.log(response);
-      if(response.status === 200) {
-        console.log('Job Deleted');
-      } else {
-        console.log('Something went wrong');
-      }
-}
-
 const JobCard = ({job}) => {
     const router = useRouter();
     function openApp() {
@@ -36,11 +12,33 @@ const JobCard = ({job}) => {
             query: {id: job.id}
         });
     }
-    let {User, Jwt, spezs, preReq} = useContext(AuthContext);
+    let {Jwt, spezs, preReq} = useContext(AuthContext);
     let spez = spezs.filter(item => item.id === job.spez_Req);
-    useEffect(() => {
-      preReq();
-    },[deleteJob])
+    async function deleteJob(jwt,id) {
+      const response = await fetch(
+          "https://recruitsys.herokuapp.com/deleteJob?" +
+            new URLSearchParams({
+              id: id,
+              jwt: jwt,
+            }),
+          {
+            method: "POST",
+            headers:{
+              'Content-Type' : 'application/json',
+          },
+          credentials: 'include',
+          body:JSON.stringify({'id': id})
+          }
+        );
+        console.log(response);
+        if(response.status === 200) {
+          preReq();
+          console.log('Job Deleted');
+          alert('Job Deleted!');
+        } else {
+          console.log('Something went wrong');
+        }
+  }
     if(job) {
         return (
             <Box display="flex"  border="1px solid black" bg="#2cc0f5" borderRadius="0.9375rem" margin="0.3125rem">

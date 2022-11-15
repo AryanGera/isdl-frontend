@@ -128,6 +128,7 @@ export const AuthProvider = ({children}) =>{
           console.log(response);
           if (response.status === 200) {
             console.log('Job Created');
+            preReq();
             alert('Job Created!');
           } else {
               console.log("404");

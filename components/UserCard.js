@@ -5,9 +5,7 @@ import moment from 'moment';
 
 function UserCard ({post, name}) {
   let k = post.schedule;
-  let d = new Date(k).getDate();
-  let mn = new Date(k).getMonth();
-  let yr = new Date(k).getFullYear();
+  let d = k.split('T')[0].split('-');
     let {jobs, spezs} = useContext(AuthContext);
     let arr = [
       { id: 1, dep: "Computer Science and Engineering" },
@@ -31,7 +29,7 @@ function UserCard ({post, name}) {
                 <Text fontWeight="600" fontSize="22" margin="0.625rem">Specialization: {spezs[0].name}  </Text>
                 <Text fontWeight="600" fontSize="22" margin="0.625rem">Post: {jobs[0].post} </Text>
                 <Text fontWeight="600" fontSize="22" margin="0.625rem">Round No: {post.roundNum}  </Text>
-                {k != null && <Box m="10px"><Text fontWeight="600" fontSize="22">Schedule: Date: {d+'/'+mn+'/'+yr} </Text> 
+                {k != null && <Box m="10px"><Text fontWeight="600" fontSize="22">Schedule: Date: {d[2]+'/'+d[1]+'/'+d[0]} </Text> 
                 <Text fontWeight="600" fontSize="22" ml="6.5rem">Time: {k.split('T')[1].split('Z')[0]} </Text></Box>}
             </Box>
         </Box>
