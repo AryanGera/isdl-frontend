@@ -109,6 +109,9 @@ export const AuthProvider = ({children}) =>{
         }
     };
 
+    
+
+
     let createJob = async (e) => {
         console.log("Form Submitted");
         e.preventDefault();

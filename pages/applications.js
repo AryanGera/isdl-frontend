@@ -5,6 +5,13 @@ import { useRouter } from 'next/router';
 import { Box, Grid, Select, Text } from '@chakra-ui/react';
 
 const Applications = () => {
+
+  const cgpa = [...apps].sort((a, b) => b.cgpa - a.cgpa);
+  const hirescore = [...apps].sort((a, b) => b.hireScore - a.hireScore);
+  const cit = [...apps].sort((a, b) => b.citations - a.citations);
+  
+
+
     const router = useRouter();
     const [apps, setApps] = useState(null);
     const [id, setId] = useState(router.query.id);
