@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import AuthContext from '../context/AuthContext';
 import SmallCard from '../components/SmallCard';
 import { useRouter } from 'next/router';
-import { Box, Grid, Text } from '@chakra-ui/react';
+import { Box, Grid, Select, Text } from '@chakra-ui/react';
 
 const Applications = () => {
     const router = useRouter();
@@ -13,6 +13,17 @@ const Applications = () => {
             setId(JSON.parse(localStorage.getItem('jobId')))
         }
       }, []);
+    const Sort = (e) => {
+      let choice = e.target.value;
+      if(choice === '1')
+      setApps([...apps].sort((a, b) => b.hireScore - a.hireScore));
+      else if(choice === '2')
+      setApps([...apps].sort((a, b) => b.cgpa - a.cgpa));
+      else if(choice === '3')
+      setApps([...apps].sort((a, b) => b.citations - a.citations));
+      else
+      setApps([...apps].sort((a, b) => b.experiance - a.experiance));
+    }
     let {User, Jwt} = useContext(AuthContext);
     if(User && Jwt) {
         if(apps) {
@@ -25,7 +36,15 @@ const Applications = () => {
             height="100%"
             padding="50px"
           >
-             <Text fontWeight="bold" fontSize="26" margin="10px" textAlign="center"> Applications  </Text>
+            <Box>
+             <Text fontWeight="bold" fontSize="26" ml="37.5rem" textAlign="center" display="flex"> Applications  
+             <Box w='250px' pl="60px"><Select placeholder="Please Select" size="sm" onChange={Sort}>
+            <option value="1" key="1" >Hireability Score</option>
+            <option value="2" key="2" >CGPA</option>
+            <option value="3" key="3" >No. of Citations</option>
+            <option value="4" key="4" >Yrs of Experience</option>
+            </Select> </Box>
+             </Text></Box>
             <Box
               display="grid"
               height="55%"

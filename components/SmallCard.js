@@ -23,7 +23,7 @@ function SmallCard ({app}) {
     const q = qual.filter(k => k.id === app.qualifications);
     if(app.roundNum > 4) {
       return (
-        <Box bg="red" padding="20px" width="350px" height="325px" display="flex"  borderRadius="20px"
+        <Box bg="#4BB543" padding="20px" width="350px" height="325px" display="flex"  borderRadius="20px"
             boxShadow={"5px 5px 10px "}
             margin="30px"
             border="2px solid black">

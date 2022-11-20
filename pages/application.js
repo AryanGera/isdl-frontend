@@ -76,12 +76,13 @@ const Application = () => {
         }
       }, [app]);
   if(app) {
+    console.log(app);
     const spez = spezs.filter(item => item.id === parseInt(app.spez));
     const q = qual.filter(k => k.id === app.qualifications);
     return (
       <Box width="80%" height="90%" display="flex" border="1px solid black" borderRadius="20px" m='1rem 10rem' padding="30px">
         <Box width="50%" border="1px solid black"  borderRadius="20px" mr="25px" p="10px">
-                    <Text fontWeight="600" fontSize="22" margin="10px"> Name: </Text>
+                    <Text fontWeight="600" fontSize="22" margin="10px"> Name: {app.username} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> Qualifications: {q[0].name} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> Specialization: {spez[0].name} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> CPI: {app.cgpa} </Text>
