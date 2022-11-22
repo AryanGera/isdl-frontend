@@ -83,10 +83,10 @@ const Admin = () => {
           <form onSubmit={createJob}>
           <Flex m="20px"> <Text fontWeight="600" fontSize="20">Department</Text>
           <Box w="300px" margin="0px 105px"><Select placeholder="Please Select" name="dept" onChange={(e) => setDep(e.target.value)} required>
-            <option value="1" key="title1" name="cse">Computer Science and Engineering</option>
-            <option value="3" key="title2" name="ece">Electronics and Communication Engineering</option>
-            <option value="4" key="title3" name="me">Mechatronics and Mechanical Engineering</option>
-            <option value="2" key="title4" name="cce">Communication and Computer Engineering</option>
+            {User.isCse === true && <option value="1" key="title1" name="cse">Computer Science and Engineering</option>}
+            {User.isEse === true && <option value="3" key="title2" name="ece">Electronics and Communication Engineering</option>}
+            {User.isMec === true && <option value="4" key="title3" name="me">Mechatronics and Mechanical Engineering</option>}
+            {User.isCce === true && <option value="2" key="title4" name="cce">Communication and Computer Engineering</option>}
           </Select> </Box>
           </Flex>
           <Flex m="20px"> <Text fontWeight="600" fontSize="20">Post</Text>

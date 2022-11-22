@@ -1,19 +1,16 @@
-import react from "react";
+import react, { useContext } from "react";
 import {
-  Select,
   Box,
   Input,
   Button,
-  Text,
-  Radio,
-  RadioGroup,
+  Text
 } from "@chakra-ui/react";
 import AuthContext from "../context/AuthContext";
-import Router from "next/router";
+import { useRouter } from "next/router";
 
-const Login = () => {
+const EditDetails = () => {
   const { Jwt} = useContext(AuthContext);
-  const router = Router();
+  const router = useRouter();
 
   let editForm = async (e) => {
     console.log("Form Submitted");
@@ -37,7 +34,7 @@ const Login = () => {
     // let data = await response.json()
     console.log(response);
     if (response.status === 200) {
-      alert("Registered Successfully");
+      alert("Updated Application Successfully");
       router.push("/dashboard");
     } else {
       console.log("404");
@@ -273,4 +270,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default EditDetails;

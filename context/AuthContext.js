@@ -52,7 +52,7 @@ export const AuthProvider = ({children}) =>{
                 router.push('/dashboard')
             }
          }else{
-            alert("Something went wrong !")
+            alert("Authentication Failed!")
         }
     }
     let preReq = async() => {
