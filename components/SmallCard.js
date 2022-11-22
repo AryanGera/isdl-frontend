@@ -46,7 +46,7 @@ function SmallCard ({app}) {
             margin="30px"
             border="2px solid black">
                 <Box width="100%" height="100%" bg="#2cc0f5" borderRadius="20px" padding="30px 10px">
-                    <Text fontWeight="600" fontSize="16" margin="10px"> Name: </Text>
+                    <Text fontWeight="600" fontSize="16" margin="10px"> Name: {app.name} </Text>
                     <Text fontWeight="600" fontSize="16" margin="10px"> Qualifications: {q[0].name} </Text>
                     <Text fontWeight="600" fontSize="16" margin="10px"> CPI: {app.cgpa} </Text>
                     <Text fontWeight="600" fontSize="16" margin="10px"> No. of Publications: {app.publications} </Text>
