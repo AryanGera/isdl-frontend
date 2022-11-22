@@ -32,7 +32,7 @@ const Login = () => {
   },[jobs]);
   if(unique) {
     return (
-      <Box display="flex" p='3.125rem 5.625rem'>
+      <Box display="flex" p='3.125rem 5.625rem' justifyContent="space-evenly">
           <Box
           bg="#2cc0f5"
           borderRadius={"20px"}
