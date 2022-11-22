@@ -52,7 +52,7 @@ export const AuthProvider = ({children}) =>{
                 router.push('/dashboard')
             }
          }else{
-            alert("Something went wrong !")
+            alert("Authentication Failed!")
         }
     }
     let preReq = async() => {
@@ -108,6 +108,9 @@ export const AuthProvider = ({children}) =>{
           alert("Something went wrong !");
         }
     };
+
+    
+
 
     let createJob = async (e) => {
         console.log("Form Submitted");

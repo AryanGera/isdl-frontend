@@ -17,6 +17,7 @@ const Application = () => {
   let [app,setApp] = useState(null);
   const [cnt, setCnt] = useState(null);
   const [flag, setFlag] = useState(true);
+  const [sch, setSch] = useState(null);
   async function nextRound(jwt,id) {
     const response = await fetch(
         "https://recruitsys.herokuapp.com/nextRound?" +
@@ -77,21 +78,27 @@ const Application = () => {
       }, [app]);
   if(app) {
     console.log(app);
+    let d = null;
+    if(sch) {
+      d = sch.split('T')[0].split('-');
+    }
+
     const spez = spezs.filter(item => item.id === parseInt(app.spez));
     const q = qual.filter(k => k.id === app.qualifications);
     return (
       <Box width="80%" height="90%" display="flex" border="1px solid black" borderRadius="20px" m='1rem 10rem' padding="30px">
         <Box width="50%" border="1px solid black"  borderRadius="20px" mr="25px" p="10px">
-                    <Text fontWeight="600" fontSize="22" margin="10px"> Name: {app.username} </Text>
+                    <Text fontWeight="600" fontSize="22" margin="10px"> Name: {app.name} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> Qualifications: {q[0].name} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> Specialization: {spez[0].name} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> CPI: {app.cgpa} </Text>
-                    <Text fontWeight="600" fontSize="22" margin="10px"> Hireability Score: {app.hireScore} </Text>
+                    <Text fontWeight="bold" color='red' fontSize="22" margin="10px"> Hireability Score: {app.hireScore} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> No. of Publications: {app.publications} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> No. of Citations: {app.citations} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> Years of Experience: {app.experiance} </Text>
                     {cnt <= 4 && <Box>
                     <Text fontWeight="600" fontSize="22" margin="10px"> Round Num: {cnt} </Text>
+                    {sch && <Text fontWeight="600" fontSize="22" margin="10px"> Schedule: Date: {d[2]+'/'+d[1]+'/'+d[0]} </Text>}
                     <Button border="2px solid black"  width="60%" margin="50px 100px" bg={"#2cc0f5"} onClick={() => nextRound(Jwt,app.id)}> Next Round 
                     </Button>
                     </Box>}

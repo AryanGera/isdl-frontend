@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { Box, Grid, Select, Text } from '@chakra-ui/react';
 
 const Applications = () => {
+
     const router = useRouter();
     const [apps, setApps] = useState(null);
     const [id, setId] = useState(router.query.id);
@@ -36,15 +37,16 @@ const Applications = () => {
             height="100%"
             padding="50px"
           >
-            <Box>
-             <Text fontWeight="bold" fontSize="26" ml="37.5rem" textAlign="center" display="flex"> Applications  
-             <Box w='250px' pl="60px"><Select placeholder="Please Select" size="sm" onChange={Sort}>
+            <Box display="flex">
+            <Text fontWeight="bold" fontSize="26" ml="40.625rem" textAlign="center"> Applications </Text>
+            <Text m='0.4375rem' ml="21.875rem" fontSize="18" textAlign="center"> Sort by: </Text>
+            <Box m='0.3125rem'><Select placeholder="Please Select" size="sm" onChange={Sort}>
             <option value="1" key="1" >Hireability Score</option>
             <option value="2" key="2" >CGPA</option>
             <option value="3" key="3" >No. of Citations</option>
             <option value="4" key="4" >Yrs of Experience</option>
             </Select> </Box>
-             </Text></Box>
+            </Box>
             <Box
               display="grid"
               height="55%"
