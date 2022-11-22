@@ -104,7 +104,7 @@ export const AuthProvider = ({children}) =>{
           alert('Registered Successfully');
           router.push("/login");
         } else {
-            console.log("404");
+          console.log(response.message);
           alert("Something went wrong !");
         }
     };

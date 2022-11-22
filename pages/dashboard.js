@@ -50,12 +50,12 @@ function Dashboard() {
             setPosts(data1);
           })();
             return (
-                <div>Here comes JSX !</div>
+                <div>Loading...</div>
             );
         }
     } else {
         return (
-            <div>who are u ???</div>
+            <div>Not Authenticated!</div>
           )
     }
 }

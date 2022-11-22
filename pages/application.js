@@ -61,6 +61,7 @@ const Application = () => {
       console.log(response);
       if(response.status === 200) {
         alert('Scheduled');
+        setSch(datetime);
         console.log('Scheduled');
       } else {
         console.log('Something went wrong');
@@ -74,6 +75,7 @@ const Application = () => {
       useEffect(() => {
         if(app) {
           setCnt(app.roundNum);
+          setSch(app.schedule);
         }
       }, [app]);
   if(app) {
@@ -92,13 +94,13 @@ const Application = () => {
                     <Text fontWeight="600" fontSize="22" margin="10px"> Qualifications: {q[0].name} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> Specialization: {spez[0].name} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> CPI: {app.cgpa} </Text>
-                    <Text fontWeight="bold" color='red' fontSize="22" margin="10px"> Hireability Score: {app.hireScore} </Text>
+                    <Text fontWeight="bold" color='red' border= "dotted black 2px" borderRadius="5px" fontSize="22" margin="10px"> Hireability Score: {app.hireScore} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> No. of Publications: {app.publications} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> No. of Citations: {app.citations} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> Years of Experience: {app.experiance} </Text>
                     {cnt <= 4 && <Box>
                     <Text fontWeight="600" fontSize="22" margin="10px"> Round Num: {cnt} </Text>
-                    {sch && <Text fontWeight="600" fontSize="22" margin="10px"> Schedule: Date: {d[2]+'/'+d[1]+'/'+d[0]} </Text>}
+                    {sch && <Text fontWeight="600" fontSize="22" margin="10px"> Schedule: Date: {d[2]+'/'+d[1]+'/'+d[0]} Time: {sch.split('T')[1].split('Z')[0]} </Text>}
                     <Button border="2px solid black"  width="60%" margin="50px 100px" bg={"#2cc0f5"} onClick={() => nextRound(Jwt,app.id)}> Next Round 
                     </Button>
                     </Box>}
@@ -118,8 +120,8 @@ const Application = () => {
           <form>
           <Text fontWeight="600" fontSize="22" margin="10px" > Meet Link </Text>
           <Box display="flex">
-          <input type="text" placeholder='meet.google.com/scy-onxx-kye' m="10px" id="meet" readOnly={flag}/>
-          <Button border="2px solid black"  width="30%" margin="10px 40px" bg={"#2cc0f5"} onClick={() => setFlag(false)}> Edit </Button>
+          <input type="text" m="10px" id="meet" required/>
+          {/* <Button border="2px solid black"  width="30%" margin="10px 40px" bg={"#2cc0f5"} onClick={() => setFlag(false)}> Edit </Button> */}
           </Box>
           <Button border="2px solid black"  width="80%" margin="40px 45px" bg={"#2cc0f5"} type="submit"> Send Email </Button>
           </form>

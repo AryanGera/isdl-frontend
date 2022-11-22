@@ -7,7 +7,8 @@ import AuthContext from "../context/AuthContext";
 const Reg = () => {
   const {sendForm, jobs, spezs} = useContext(AuthContext);
   const [pass,setPass] = useState(null);
-  const [retype, setRetype] = useState(null);
+  const [phdReq, setphdReq] = useState(false);
+  const [cgpa,setCgpa] = useState(0.00);
   const [isError, SetIsError] = useState(true)
   const router = useRouter();
   
@@ -23,8 +24,7 @@ const Reg = () => {
     { id: "3", name: "BSc"},
     { id: "4", name: "MSc"},
     { id: "5", name: "B.Tech"},
-    { id: "6", name: "M.Tech"},
-    { id: "7", name: "PhD"}
+    { id: "6", name: "M.Tech"}
   ]
 
   const checkPass = (e) => {
@@ -36,7 +36,12 @@ const Reg = () => {
   if(jobs) {
     const nhp = (e) => {
       const d = jobs.filter(k => (k.dept === parseInt(router.query.dep) && k.post === router.query.post && k.spez_Req=== parseInt(e.target.value)))
-      localStorage.setItem('jobid',d[0].id);
+      if(d.length) {
+        if(d[0].phd_Req === true) setphdReq(true);
+        else setphdReq(false);
+        localStorage.setItem('jobid',d[0].id);
+        setCgpa("Required CPI: "+d[0].cgpa_Req);
+      }
     }
     const v = [...new Set(jobs.filter(k => (k.dept === parseInt(router.query.dep) && k.post === router.query.post)))];
     return (
@@ -108,13 +113,12 @@ const Reg = () => {
           <Box p='2rem'>
           <Flex m='5px'>Educational Qualifications
           <Box w='60%' ml='3.125rem'><Select size="sm" placeholder="Please Select" name="qualifications" required>
-            {
-              qual.map(k => <option key={k.id} value={k.id}>{k.name}</option>)
-            }
+            {phdReq===false && qual.map(k => <option key={k.id} value={k.id}>{k.name}</option>)}
+            <option key={7} value={7}>PhD</option>
           </Select></Box>
           </Flex>
           <Flex m='5px'> CGPA
-          <Box w='60%' ml='11.875rem'><Input text="number" placeholder="00.00" size="sm" name="cgpa" required /></Box>
+          <Box w='60%' ml='11.875rem'><Input text="number" placeholder={cgpa} max='10' size="sm" name="cgpa" required /></Box>
           </Flex>
           <Flex m='5px'> No. of Citations
           <Box w='60%' ml='7.8125rem'><Input text="number" placeholder="No. of Citations" size="sm" name="citations" /></Box>

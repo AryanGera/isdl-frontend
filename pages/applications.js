@@ -84,15 +84,12 @@ const Applications = () => {
             setApps(data1);
           })();
             return (
-                <div>Here comes JSX !</div>
+                <div>Loading...</div>
             );
         }
     } else {
         return (
-            <div>who are u ???
-                <SmallCard />
-                <SmallCard />
-            </div>
+            <div>Not Authenticated!</div>
           )
     }
 }

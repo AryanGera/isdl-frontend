@@ -5,13 +5,27 @@ import AuthContext from "../context/AuthContext";
 
 const Admin = () => {
   const [dep, setDep] = useState(null);
-  const [post,setPost] = useState(null);
+  const [posts,setPosts] = useState(null);
   const {User, Jwt, jobs, spezs, createJob } = useContext(AuthContext);
   let options = null;
 
-  const addPost = (e) => {
+  let addPost = async(e) => {
     e.preventDefault();
-    setPost(<option>{e.target.post.value}</option>);
+    let resp = await fetch("https://recruitsys.herokuapp.com/addPost?"+new URLSearchParams({ jwt: Jwt }), {
+            method: 'POST',
+            headers:{
+                'Content-Type' : 'application/json',
+            },
+            credentials: 'include',
+            body:JSON.stringify({'name':e.target.post.value})
+        });
+    let data = await resp.json();
+    console.log(data);
+    if(resp.status === 200) {
+      alert('Post Added!');
+    } else {
+      alert('Something went wrong!');
+    }
   }
 
   if(dep) {
@@ -21,18 +35,20 @@ const Admin = () => {
   }
   
   if(User && Jwt) {
+    if(posts) {
+      console.log(posts);
     return (
-      <Box display="flex" padding="10px">
+      <Box display="flex" padding="10px" justifyContent="center">
         <Box
           bg="#fff"
           width="50%"
-          height="600px"
+          minHeight="600px"
           borderRadius="20px"
           margin="10px"
           border="2px solid black"
         >
-          <Box width="100%" height="60px" bg="#2cc0f5" borderRadius="20px 20px 0px 0px" padding="10px 260px 5px 260px">
-        <Text fontWeight="600" fontSize="22">Job Openings</Text>
+          <Box width="100%" height="60px" bg="#2cc0f5" display="flex" justifyContent="center" textAlign="center" w="100%" borderRadius="20px 20px 0px 0px" p='15px'>
+        <Text fontWeight="600" fontSize="22" textAlign="center" w="100%">Job Openings</Text>
     </Box>
     {User.isCse===true && <Box padding="10px">
     <Text fontWeight="600" fontSize="20" margin="0px 20px">CSE Department</Text>
@@ -70,13 +86,15 @@ const Admin = () => {
         <Box
           bg="#fff"
           width="50%"
-          height="600px"
+          minHeight="600px"
           borderRadius="20px"
           margin="10px"
           border="2px solid black"
+          display="flex"
+          flexDirection="column"
         >
-          <Box width="100%" height="60px" bg="#2cc0f5" borderRadius="20px 20px 0px 0px" padding="10px 260px 5px 260px">
-          <Text fontWeight="600" fontSize="22">
+          <Box width="100%" height="60px" bg="#2cc0f5" borderRadius="20px 20px 0px 0px" display="flex" justifyContent="center" textAlign="center" w="100%">
+          <Text fontWeight="600" fontSize="22" textAlign="center" w="100%">
             Create Job{" "}
           </Text>
           </Box>
@@ -91,10 +109,9 @@ const Admin = () => {
           </Flex>
           <Flex m="20px"> <Text fontWeight="600" fontSize="20">Post</Text>
           <Box w="300px" m="0px 0px 0px 170px"><Select placeholder="Please Select" name="post" required>
-            <option value="Assisant Professor" name="cse">Assisant Professor</option>
-            <option value="Associate Professor" name="ece">Associate Professor</option>
-            <option value="Professor" name="me">Professor</option>
-            {post}
+            {
+              posts.map(item => <option key={item.id}>{item.name}</option>)
+            }
           </Select></Box>
           </Flex>
           <Flex m="20px"><Text fontWeight="600" fontSize="20">Specialization</Text>
@@ -109,7 +126,7 @@ const Admin = () => {
           </Select></Box>
           </Flex>
           <Flex m="20px"><Text fontWeight="600" fontSize="20">Min. CGPA Required</Text>
-          <Box w="300px" margin="0px 25px"><Input type="number" min="0" step="any" name="cgpa_Req" required></Input></Box>
+          <Box w="300px" margin="0px 25px"><Input type="number" min="0" max="10" step="any" name="cgpa_Req" required></Input></Box>
           </Flex>
           <Button border="2px solid black"  width="80%" margin="30px 70px" bg={"#2cc0f5"} type="submit"> Create 
           </Button>
@@ -123,8 +140,21 @@ const Admin = () => {
         </Box>
       </Box>
     );
+    } else {
+      (async() => {
+        const resp = await fetch(
+          "https://recruitsys.herokuapp.com/getPosts?"+new URLSearchParams({ jwt: Jwt }),
+          {
+            method: "GET",
+          }
+        );
+        let data = await resp.json();
+        console.log(data);
+        setPosts(data);
+      })();
+    }
   } else {
-    return <div> Who are You?</div>
+    return <div> Not Authenticated! </div>
   }
 };
 

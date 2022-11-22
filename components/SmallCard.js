@@ -31,8 +31,8 @@ function SmallCard ({app}) {
                     <Text fontWeight="600" fontSize="16" margin="10px"> Name: {app.name} </Text>
                     <Text fontWeight="600" fontSize="16" margin="10px"> Qualifications: {q[0].name} </Text>
                     <Text fontWeight="600" fontSize="16" margin="10px"> CPI: {app.cgpa} </Text>
-                    <Text fontWeight="600" fontSize="16" margin="10px"> No. of Publications: {app.publications} </Text>
-                    <Text fontWeight="600" fontSize="16" margin="10px"> Hireability Score: {app.hireScore} </Text>
+                    <Text fontWeight="600" fontSize="16" margin="10px"> No. of Citations: {app.citations} </Text>
+                    <Text fontWeight="bold" color="red" border= "dotted black 2px" borderRadius="5px" fontSize="16" margin="10px"> Hireability Score: {app.hireScore} </Text>
                     <Text fontWeight="600" fontSize="16" margin="10px"> Years of Experience: {app.experiance} </Text>
                     <Button height="25px" m="0px 105px" border="1px solid black"  width="20%"  bg={"#fff"} onClick={handleSubmit}> Open 
                     </Button>
@@ -49,8 +49,8 @@ function SmallCard ({app}) {
                     <Text fontWeight="600" fontSize="16" margin="10px"> Name: {app.name} </Text>
                     <Text fontWeight="600" fontSize="16" margin="10px"> Qualifications: {q[0].name} </Text>
                     <Text fontWeight="600" fontSize="16" margin="10px"> CPI: {app.cgpa} </Text>
-                    <Text fontWeight="600" fontSize="16" margin="10px"> No. of Publications: {app.publications} </Text>
-                    <Text fontWeight="600" fontSize="16" margin="10px"> Hireability Score: {app.hireScore} </Text>
+                    <Text fontWeight="600" fontSize="16" margin="10px"> No. of Citations: {app.citations} </Text>
+                    <Text fontWeight="bold" color='red' border= "dotted black 2px" borderRadius="5px" fontSize="16" margin="10px"> Hireability Score: {app.hireScore} </Text>
                     <Text fontWeight="600" fontSize="16" margin="10px"> Years of Experience: {app.experiance} </Text>
                     <Button height="25px" m="0px 105px" border="1px solid black"  width="20%"  bg={"#fff"} onClick={handleSubmit}> Open 
                     </Button>

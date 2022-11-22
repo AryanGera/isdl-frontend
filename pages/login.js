@@ -72,9 +72,9 @@ const Login = () => {
             </Text>
               <FormControl width={"100%"}>
                 <FormLabel>Email address</FormLabel>
-                <Input type="email" backgroundColor="white" name="email" />
+                <Input type="email" backgroundColor="white" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name="email" />
                 <FormLabel>Password</FormLabel>
-                <Input type="password" backgroundColor="white" name="password" />
+                <Input type="password" backgroundColor="white" name="password" required/>
               </FormControl>
               <Button border="2px solid black"  width="100%" marginTop="50px" bg={"#ff9800"} type="submit">
                   Submit
