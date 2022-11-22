@@ -82,6 +82,7 @@ const Application = () => {
     if(sch) {
       d = sch.split('T')[0].split('-');
     }
+
     const spez = spezs.filter(item => item.id === parseInt(app.spez));
     const q = qual.filter(k => k.id === app.qualifications);
     return (
