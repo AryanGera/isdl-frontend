@@ -103,7 +103,7 @@ const Reg = () => {
           <Box w='60%' ml='9.6875rem'><Input type="text" id="age" onChange={checkAge} borderColor="black" placeholder="Enter Age" size="sm" name="age" required></Input><span color="red" id="error"></span></Box>
           </Flex>
           <Flex m='5px'>Gender
-          <Box w='60%' ml='8.125rem'><Select placeholder="Please Select" borderColor="black" size="sm" name="gender">
+          <Box w='60%' ml='8.125rem'><Select placeholder="Please Select" borderColor="black" size="sm" name="gender" required>
             <option value="M">Male</option>
             <option value="F">Female</option>
           </Select></Box>
@@ -140,10 +140,10 @@ const Reg = () => {
           <Box w='60%' ml='11.875rem'><Input text="number" borderColor="black" placeholder={cgpa} max='10' size="sm" name="cgpa" required /></Box>
           </Flex>
           <Flex m='5px'> No. of Citations
-          <Box w='60%' ml='7.8125rem'><Input text="number" borderColor="black" placeholder="No. of Citations" size="sm" name="citations" /></Box>
+          <Box w='60%' ml='7.8125rem'><Input text="number" borderColor="black" placeholder="No. of Citations" size="sm" name="citations" required/></Box>
           </Flex>
           <Flex m='5px'> No. of Publications
-          <Box w='60%' ml='6.25rem'><Input text="number" borderColor="black" placeholder="No. of Publications" size="sm" name="publications" /></Box>
+          <Box w='60%' ml='6.25rem'><Input text="number" borderColor="black" placeholder="No. of Publications" size="sm" name="publications" required/></Box>
           </Flex>
           <Flex m='5px'> Experience
           <Box w='60%' ml='9.6875rem'><Input text="number" borderColor="black" placeholder="Enter Experience" size="sm" name="experiance" required /></Box>
