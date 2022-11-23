@@ -49,7 +49,7 @@ const Applications = () => {
             </Select> </Box>
             </Box>
             <Box
-              display="grid"
+              display="flex"
               height="55%"
               minHeight="200px"
               width="100%"

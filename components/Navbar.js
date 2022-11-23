@@ -14,7 +14,7 @@ const Navbar = () => {
     if(User.isCse || User.isCce || User.isEse || User.isMec)
     isAdmin = true;
     return (
-      <Box  bg="#2cc0f5"  height = "5rem" padding="0.625rem" display ="flex" flexDirection={"row"} justifyContent="center" paddingRight= "3.125rem" paddingLeft = "3.125rem">
+      <Box  bg="#89CFF0"  height = "5rem" padding="0.625rem" display ="flex" flexDirection={"row"} justifyContent="center" paddingRight= "3.125rem" paddingLeft = "3.125rem">
         <Button  border="2px solid black"  margin="0.625rem" paddingTop = '0.3125rem'colorScheme={"green"} onClick={() => router.back()}>Back</Button>
         {isAdmin === false && <Button margin="0.625rem" border="2px solid black" paddingTop = '0.3125rem' colorScheme="yellow" onClick={() => router.push('./editdetails')} > Update App </Button>}
         <Text fontSize="2.5rem" as='b' fontWeight="800">The LNM Institute of Technology </Text>
@@ -26,7 +26,7 @@ const Navbar = () => {
     );
   } else {
     return (
-      <Box  bg="#2cc0f5"  height = "5rem" padding="0.625rem" display ="flex" flexDirection="row" justifyContent="center" paddingRight= "3.125rem" paddingLeft = "3.125rem">
+      <Box  bg="#89CFF0"  height = "5rem" padding="0.625rem" display ="flex" flexDirection="row" justifyContent="center" paddingRight= "3.125rem" paddingLeft = "3.125rem">
         <Text fontSize="2.5rem" as='b' fontWeight="1000" >The LNM Institute of Technology </Text>
       </Box>
     );

@@ -23,16 +23,18 @@ function UserCard ({post, name}) {
     console.log(spezs);
     let randi = arr.filter(item => item.id === jobs[0].dept);
       return (
-        <Box bg="#fff" padding="20px" width="450px" minHeight="375px" display="flex"  borderRadius="20px"
+        <Box padding="20px" width="450px" minHeight="375px" display="flex"  borderRadius="20px"
         boxShadow={"5px 5px 10px "}
+        bg = '#ffffe5'
         margin="20px"
         border="2px solid black">
-            <Box width="100%" height="100%" bg="#2cc0f5" borderRadius="20px" padding="30px 10px">
+            <Box width="100%" height="100%" borderRadius="20px" padding="30px 10px">
                 <Text fontWeight="600" fontSize="22" margin="0.625rem">Department: {randi[0].dep} </Text>
                 <Text fontWeight="600" fontSize="22" margin="0.625rem">Specialization: {spezs[0].name}  </Text>
                 <Text fontWeight="600" fontSize="22" margin="0.625rem">Post: {jobs[0].post} </Text>
                 <Text fontWeight="600" fontSize="22" margin="0.625rem">Citations: {post.citations} </Text>
                 <Text fontWeight="600" fontSize="22" margin="0.625rem">Experience: {post.experiance} </Text>
+                <Text fontWeight="600" fontSize="22" margin="0.625rem">Meet Link: {post.meet} </Text>
                 <Text fontWeight="600" fontSize="22" margin="0.625rem">Round No: {post.roundNum}  </Text>
                 {k != null && <Box m="10px"><Text fontWeight="600" fontSize="22">Schedule: Date: {d[2]+'/'+d[1]+'/'+d[0]} </Text> 
                 <Text fontWeight="600" fontSize="22" ml="6.5rem">Time: {k.split('T')[1].split('Z')[0]} </Text></Box>}

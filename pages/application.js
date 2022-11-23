@@ -18,6 +18,7 @@ const Application = () => {
   const [cnt, setCnt] = useState(null);
   const [sch, setSch] = useState(null);
   const [meet,setMeet] = useState(null);
+  const [flag,setFlag] = useState(false);
   async function nextRound(jwt,id) {
     const response = await fetch(
         "https://recruitsys.herokuapp.com/nextRound?" +
@@ -43,7 +44,9 @@ const Application = () => {
   }
 
   async function Schedule(jwt,id, datetime) {
+    
     console.log(datetime);
+
     const response = await fetch(
         "https://recruitsys.herokuapp.com/schedule?" +
           new URLSearchParams({
@@ -60,8 +63,8 @@ const Application = () => {
       );
       console.log(response);
       if(response.status === 200) {
-        alert('Scheduled');
         setSch(datetime);
+        alert('Scheduled');
         console.log('Scheduled');
       } else {
         console.log('Something went wrong');
@@ -110,12 +113,13 @@ const Application = () => {
     if(sch) {
       d = sch.split('T')[0].split('-');
     }
+    console.log(new Date().toISOString().split('T')[0]+'T' + new Date().toISOString().split('T')[1].slice(0,5));
 
     const spez = spezs.filter(item => item.id === parseInt(app.spez));
     const q = qual.filter(k => k.id === app.qualifications);
     return (
-      <Box width="80%" height="90%" display="flex" border="1px solid black" borderRadius="20px" m='1rem 10rem' padding="30px">
-        <Box width="50%" border="1px solid black"  borderRadius="20px" mr="25px" p="10px">
+      <Box width="80%" height="90%" display="flex" bg="rgba(11, 127, 171, 0.1)" border="1px solid black" borderRadius="20px" m='1rem 10rem' padding="30px">
+        <Box width="50%" bg='#ffffe5'  borderRadius="20px" mr="25px" p="10px" boxShadow={"5px 5px 10px"}>
                     <Text fontWeight="600" fontSize="22" margin="10px"> Name: {app.name} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> Qualifications: {q[0].name} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> Specialization: {spez[0].name} </Text>
@@ -136,20 +140,22 @@ const Application = () => {
                     </Box>}
                 </Box>
           <Box>
-          <Box border="1px solid black"  borderRadius="20px" m="10px" h="45%" w='100%' p="20px">
+          <Box bg='#ffffe5' boxShadow={"5px 5px 10px"} borderRadius="20px" m="10px" h="45%" w='100%' p="20px">
           <form>
           <Text fontWeight="600" fontSize="22" margin="10px"> Schedule Date/Time</Text>
-          <input type="datetime-local" name='datetime' id='epic' />
+          <Input type="datetime-local" name='datetime' 
+          min = {new Date().toISOString().split('T')[0]+'T' + new Date().toISOString().split('T')[1].slice(0,5)} 
+          id='epic' />
           <Button border="2px solid black"  width="70%" margin="50px 50px" bg={"#2cc0f5"} onClick={() => Schedule(Jwt,app.id,document.getElementById('epic').value)}> Schedule </Button>
           </form>
           </Box>
-          <Box border="1px solid black"  borderRadius="20px" m="30px 10px 0px 10px" h="45%" w="100%" p="20px">
+          <Box bg='#ffffe5' boxShadow={"5px 5px 10px"} borderRadius="20px" m="30px 10px 0px 10px" h="45%" w="100%" p="20px">
           <form>
           <Box display="flex" flexDirection="column" justifyContent="center">
           <Text fontWeight="600" fontSize="22" margin="10px" > Meet Link </Text>
           <Input type="text" m="10px" w="80%" id="meet" borderColor="black" required/>
           {/* <Button border="2px solid black"  width="30%" margin="10px 40px" bg={"#2cc0f5"} onClick={() => setFlag(false)}> Edit </Button> */}
-          <Button border="2px solid black"  width="70%" margin="40px 50px" bg={"#2cc0f5"} onClick={() => sendMail(Jwt,app.id,document.getElementById('meet').value)}> Send Email </Button>
+          {sch && <Button border="2px solid black"  width="70%" margin="40px 50px" bg={"#2cc0f5"} onClick={() => sendMail(Jwt,app.id,document.getElementById('meet').value)}> Send Email </Button>}
           </Box>
           </form>
           </Box>

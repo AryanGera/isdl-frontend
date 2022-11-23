@@ -65,7 +65,7 @@ const Reg = () => {
     const v = [...new Set(jobs.filter(k => (k.dept === parseInt(router.query.dep) && k.post === router.query.post)))];
     return (
       <Box display="flex" justifyContent="center">
-        <Box w='60%' h='80%'  bg="#f2f2f2" m="20px"
+        <Box w='60%' h='80%'  bg="#ffffe5" m="20px"
             boxShadow="15px  10px 10px #555555"
             borderRadius="20px" border="2px solid black">
         <Box p="10px 20px">
@@ -73,7 +73,7 @@ const Reg = () => {
         <Text fontWeight="bold" fontSize="20" margin="0.5rem"> Department: {arr[router.query.dep]} </Text>
         </Box>
         <form onSubmit={sendForm} id="form"  className={regStyles.form}>
-          <Box bg="#2cc0f5" p='10px 20px'>
+          <Box bg="#89CFF0" p='10px 20px'>
           <Text fontSize={25}>Personal Details</Text> 
           </Box>
           <Box p='2rem'>
@@ -126,7 +126,7 @@ const Reg = () => {
           <Box w='60%' ml='6.875rem'><Input type="text" borderColor="black" placeholder="Nationality" size="sm" name="Nationality" required></Input></Box>
           </Flex>
           </Box>
-          <Box bg="#2cc0f5" p='10px 20px'>
+          <Box bg="#89CFF0" p='10px 20px'>
           <Text fontSize={25}>QUALIFICATION AS PER ELIGIBILITY CRITERIA</Text>
           </Box>
           <Box p='2rem'>
@@ -149,7 +149,7 @@ const Reg = () => {
           <Box w='60%' ml='9.6875rem'><Input text="number" min='0' max='30' borderColor="black" placeholder="Enter Experience, Max: 30" size="sm" name="experiance" required /></Box>
           </Flex>
           </Box>
-          <Box bg="#2cc0f5" p='10px 20px'>
+          <Box bg="#89CFF0" p='10px 20px'>
           <Text fontSize={25}>COMMUNICATION</Text>
           </Box>
           <Box p='2rem'>
@@ -185,7 +185,7 @@ const Reg = () => {
           {isError && <Text color='red'>Password doesnot match!</Text>}
           </Box>
           </Flex>
-          {!isError && !isAge && <Button border="2px solid black"  width="60%" mt="40px" ml='150px' bg={"#2cc0f5"} type="submit"> Submit 
+          {!isError && !isAge && <Button border="2px solid black"  width="60%" mt="40px" ml='150px' bg={"#89CFF0"} type="submit"> Submit 
           </Button>}
           </Box>
         </form>

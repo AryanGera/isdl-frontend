@@ -85,6 +85,7 @@ export const AuthProvider = ({children}) =>{
     let sendForm = async (e) => {
       console.log("Form Submitted");
       e.preventDefault();
+      console.log(e.target);
       const jobid = localStorage.getItem('jobid');
       const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries());
