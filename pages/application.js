@@ -16,8 +16,8 @@ const Application = () => {
   const {spezs, Jwt} = useContext(AuthContext);
   let [app,setApp] = useState(null);
   const [cnt, setCnt] = useState(null);
-  const [flag, setFlag] = useState(true);
   const [sch, setSch] = useState(null);
+  const [meet,setMeet] = useState(null);
   async function nextRound(jwt,id) {
     const response = await fetch(
         "https://recruitsys.herokuapp.com/nextRound?" +
@@ -68,7 +68,7 @@ const Application = () => {
       }
   } 
 
-  async function sendMail(jwt,id) {
+  async function sendMail(jwt,id, meet) {
     const response = await fetch(
         "https://recruitsys.herokuapp.com/sendMail?" +
           new URLSearchParams({
@@ -85,6 +85,7 @@ const Application = () => {
       );
       console.log(response);
       if(response.status === 200) {
+        setMeet(meet);
         alert('Sent Mail!');
       } else {
         alert('Authentication Failed!');
@@ -100,6 +101,7 @@ const Application = () => {
         if(app) {
           setCnt(app.roundNum);
           setSch(app.schedule);
+          setMeet(app.meet);
         }
       }, [app]);
   if(app) {
@@ -125,6 +127,7 @@ const Application = () => {
                     {cnt <= 4 && <Box>
                     <Text fontWeight="600" fontSize="22" margin="10px"> Round Num: {cnt} </Text>
                     {sch && <Text fontWeight="600" fontSize="22" margin="10px"> Schedule: Date: {d[2]+'/'+d[1]+'/'+d[0]} Time: {sch.split('T')[1].split('Z')[0]} </Text>}
+                    <Text fontWeight="600" fontSize="22" margin="10px"> Meet Link: {meet} </Text>
                     <Button border="2px solid black"  width="60%" margin="50px 100px" bg={"#2cc0f5"} onClick={() => nextRound(Jwt,app.id)}> Next Round 
                     </Button>
                     </Box>}
@@ -146,7 +149,7 @@ const Application = () => {
           <Text fontWeight="600" fontSize="22" margin="10px" > Meet Link </Text>
           <Input type="text" m="10px" w="80%" id="meet" borderColor="black" required/>
           {/* <Button border="2px solid black"  width="30%" margin="10px 40px" bg={"#2cc0f5"} onClick={() => setFlag(false)}> Edit </Button> */}
-          <Button border="2px solid black"  width="70%" margin="40px 50px" bg={"#2cc0f5"} onClick={() => sendMail(Jwt,app.id)}> Send Email </Button>
+          <Button border="2px solid black"  width="70%" margin="40px 50px" bg={"#2cc0f5"} onClick={() => sendMail(Jwt,app.id,document.getElementById('meet').value)}> Send Email </Button>
           </Box>
           </form>
           </Box>

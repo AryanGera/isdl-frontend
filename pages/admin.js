@@ -155,8 +155,8 @@ const Admin = () => {
             {options}
           </Select></Box>
           </Flex>
-          <Flex m="20px"> <Text fontWeight="600" fontSize="20">Is PhD is Required?</Text>
-          <Box w="300px" margin="0px 30px"><Select placeholder="Please Select" name="phd_Req" required>
+          <Flex m="20px"> <Text fontWeight="600" fontSize="20">Is PhD Required?</Text>
+          <Box w="300px" margin="0px 50px"><Select placeholder="Please Select" name="phd_Req" required>
           <option value="true" name="true">Yes</option>
             <option value="false" name="no">No</option>
           </Select></Box>

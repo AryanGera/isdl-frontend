@@ -137,7 +137,7 @@ const Reg = () => {
           </Select></Box>
           </Flex>
           <Flex m='5px'> CGPA
-          <Box w='60%' ml='11.875rem'><Input text="number" borderColor="black" placeholder={cgpa} min='0' max='10' size="sm" name="cgpa" required /></Box>
+          <Box w='60%' ml='11.875rem'><Input text="number" borderColor="black" placeholder={cgpa} min='0' max='10' size="sm" step='0.01' name="cgpa" required /></Box>
           </Flex>
           <Flex m='5px'> No. of Citations
           <Box w='60%' ml='7.8125rem'><Input text="number" min='0'  max='200' borderColor="black" placeholder="No. of Citations" size="sm" name="citations" required/></Box>
