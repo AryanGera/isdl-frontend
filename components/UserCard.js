@@ -1,4 +1,4 @@
-import { Box, Text } from '@chakra-ui/react'
+import { Box, Button, Text } from '@chakra-ui/react'
 import React, { useContext, useState } from 'react'
 import AuthContext from '../context/AuthContext';
 import moment from 'moment';
@@ -31,6 +31,8 @@ function UserCard ({post, name}) {
                 <Text fontWeight="600" fontSize="22" margin="0.625rem">Department: {randi[0].dep} </Text>
                 <Text fontWeight="600" fontSize="22" margin="0.625rem">Specialization: {spezs[0].name}  </Text>
                 <Text fontWeight="600" fontSize="22" margin="0.625rem">Post: {jobs[0].post} </Text>
+                <Text fontWeight="600" fontSize="22" margin="0.625rem">Citations: {post.citations} </Text>
+                <Text fontWeight="600" fontSize="22" margin="0.625rem">Experience: {post.experiance} </Text>
                 <Text fontWeight="600" fontSize="22" margin="0.625rem">Round No: {post.roundNum}  </Text>
                 {k != null && <Box m="10px"><Text fontWeight="600" fontSize="22">Schedule: Date: {d[2]+'/'+d[1]+'/'+d[0]} </Text> 
                 <Text fontWeight="600" fontSize="22" ml="6.5rem">Time: {k.split('T')[1].split('Z')[0]} </Text></Box>}

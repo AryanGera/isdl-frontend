@@ -1,14 +1,16 @@
 import React, { useContext, useState } from 'react'
 import AuthContext from "../context/AuthContext";
 import UserCard from '../components/UserCard';
-import { Box, Text } from '@chakra-ui/react';
-import jwt_decode from 'jwt-decode'
+import { Box, Button, Text } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
 function Dashboard() {
+  const router = useRouter();
     const { User, Jwt} = useContext(AuthContext);
     const [posts,setPosts] = useState(null);
     if(User && Jwt) {
         if(posts) {
+          console.log(posts);
             return (
               <Box
             display="flex"

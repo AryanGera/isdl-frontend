@@ -6,6 +6,7 @@ import AuthContext from "../context/AuthContext";
 const Admin = () => {
   const [dep, setDep] = useState(null);
   const [posts,setPosts] = useState(null);
+  const [postid, setPostid] = useState(null);
   const {User, Jwt, jobs, spezs, createJob } = useContext(AuthContext);
   let options = null;
 
@@ -31,6 +32,33 @@ const Admin = () => {
       let data = await resp.json();
       setPosts(data);
       alert('Post Added!');
+    } else {
+      alert('Something went wrong!');
+    }
+  }
+
+  let delPost = async(e) => {
+    e.preventDefault();
+    let resp = await fetch("https://recruitsys.herokuapp.com/deletePost?"+new URLSearchParams({ jwt: Jwt }), {
+            method: 'POST',
+            headers:{
+                'Content-Type' : 'application/json',
+            },
+            credentials: 'include',
+            body:JSON.stringify({'name': postid})
+        });
+    let data = await resp.json();
+    console.log(data);
+    if(resp.status === 200) {
+      const resp = await fetch(
+        "https://recruitsys.herokuapp.com/getPosts?"+new URLSearchParams({ jwt: Jwt }),
+        {
+          method: "GET",
+        }
+      );
+      let data = await resp.json();
+      setPosts(data);
+      alert('Post Deleted!');
     } else {
       alert('Something went wrong!');
     }
@@ -116,11 +144,11 @@ const Admin = () => {
           </Select> </Box>
           </Flex>
           <Flex m="20px"> <Text fontWeight="600" fontSize="20">Post</Text>
-          <Box w="440px" m="0px 0px 0px 170px" display="flex" justifyContent="space-between"><Select placeholder="Please Select" name="post" required>
+          <Box w="440px" m="0px 0px 0px 170px" display="flex" justifyContent="space-between"><Select placeholder="Please Select" onChange={(e) => setPostid(e.target.value)} name="post" required>
             {
-              posts.map(item => <option key={item.id}>{item.name}</option>)
+              posts.map(item => <option key={item.id} id='opt'>{item.name}</option>)
             }
-          </Select><Button border="2px solid black" ml="10px" width="40%" bg={"#2cc0f5"}> Delete</Button></Box>
+          </Select><Button border="2px solid black" ml="10px" width="40%" onClick={(e) => delPost(e)} bg={"#2cc0f5"}> Delete</Button></Box>
           </Flex>
           <Flex m="20px"><Text fontWeight="600" fontSize="20">Specialization</Text>
           <Box w="300px" margin="0px 85px"><Select placeholder="Please Select" name="spez_Req" required>
