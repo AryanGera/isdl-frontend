@@ -39,8 +39,8 @@ export const AuthProvider = ({children}) =>{
             credentials: 'include',
             body:JSON.stringify({'email':e.target.email.value, 'password':e.target.password.value})
         })
-        let data = await response.json()
-        console.log(response)
+        let data = await response.json();
+        console.log(response.status)
         if(response.status === 200){
             setUser(jwt_decode(data.jwt))
             setAuthToken(data.jwt)
@@ -52,7 +52,7 @@ export const AuthProvider = ({children}) =>{
                 router.push('/dashboard')
             }
          }else{
-            alert("Authentication Failed!")
+            alert("Check Email and Password!")
         }
     }
     let preReq = async() => {
@@ -98,14 +98,12 @@ export const AuthProvider = ({children}) =>{
           credentials: "include",
           body: JSON.stringify(data),
         });
-        // let data = await response.json()
-        console.log(response);
+        let res = await response.json();
         if (response.status === 200) {
           alert('Registered Successfully');
           router.push("/login");
         } else {
-          console.log(response.message);
-          alert("Something went wrong !");
+          alert(res.condition);
         }
     };
 
@@ -127,15 +125,14 @@ export const AuthProvider = ({children}) =>{
             credentials: "include",
             body: JSON.stringify(data),
           });
-          // let data = await response.json()
+          let res = await response.json()
           console.log(response);
           if (response.status === 200) {
             console.log('Job Created');
             preReq();
             alert('Job Created!');
           } else {
-              console.log("404");
-            alert("Something went wrong !");
+            alert(res.auth);
           }
       };
 

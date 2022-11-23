@@ -22,6 +22,14 @@ const Admin = () => {
     let data = await resp.json();
     console.log(data);
     if(resp.status === 200) {
+      const resp = await fetch(
+        "https://recruitsys.herokuapp.com/getPosts?"+new URLSearchParams({ jwt: Jwt }),
+        {
+          method: "GET",
+        }
+      );
+      let data = await resp.json();
+      setPosts(data);
       alert('Post Added!');
     } else {
       alert('Something went wrong!');
@@ -108,11 +116,11 @@ const Admin = () => {
           </Select> </Box>
           </Flex>
           <Flex m="20px"> <Text fontWeight="600" fontSize="20">Post</Text>
-          <Box w="300px" m="0px 0px 0px 170px"><Select placeholder="Please Select" name="post" required>
+          <Box w="440px" m="0px 0px 0px 170px" display="flex" justifyContent="space-between"><Select placeholder="Please Select" name="post" required>
             {
               posts.map(item => <option key={item.id}>{item.name}</option>)
             }
-          </Select></Box>
+          </Select><Button border="2px solid black" ml="10px" width="40%" bg={"#2cc0f5"}> Delete</Button></Box>
           </Flex>
           <Flex m="20px"><Text fontWeight="600" fontSize="20">Specialization</Text>
           <Box w="300px" margin="0px 85px"><Select placeholder="Please Select" name="spez_Req" required>
@@ -131,12 +139,12 @@ const Admin = () => {
           <Button border="2px solid black"  width="80%" margin="30px 70px" bg={"#2cc0f5"} type="submit"> Create 
           </Button>
           </form>
-          <form onSubmit={addPost}>
+          {User.isCse === true && User.isCce===true && User.isEse===true && User.isMec===true && <form onSubmit={addPost}>
           <Flex m='20px'><Text fontWeight="600" fontSize="20">Add Post</Text>
-          <Box w="200px" ml='130px' mr='40px'><Input type="text" name="post"></Input></Box>
+          <Box w="200px" ml='130px' mr='40px'><Input type="text" borderColor="black" name="post"></Input></Box>
           <Button border="2px solid black"  width="20%" bg={"#2cc0f5"} type='submit'> Add</Button>
           </Flex>
-          </form>
+          </form>}
         </Box>
       </Box>
     );

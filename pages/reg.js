@@ -10,6 +10,7 @@ const Reg = () => {
   const [phdReq, setphdReq] = useState(false);
   const [cgpa,setCgpa] = useState(0.00);
   const [isError, SetIsError] = useState(true)
+  const [isAge, SetIsAge] = useState(true);
   const router = useRouter();
   
   const arr ={
@@ -27,10 +28,28 @@ const Reg = () => {
     { id: "6", name: "M.Tech"}
   ]
 
+  var curr_date=new Date().toLocaleDateString();
+  let curr_year=parseInt(curr_date.slice(-4));
+
   const checkPass = (e) => {
     if(e.target.value === pass) {
       SetIsError(false);
     } else SetIsError(true);
+  }
+
+  const checkAge = (e) => {
+    const age = parseInt(document.getElementById('age').value);
+    const dob = parseInt(document.getElementById('dob').value.split('-')[0]);
+    console.log(dob);
+    const error = document.getElementById('error');
+    if(age === curr_year-dob || age === curr_year-dob-1)
+    {
+      error.textContent = '';
+      SetIsAge(false);
+    } else {
+      error.textContent = 'Enter Correct Age';
+      SetIsAge(true);
+    }
   }
   
   if(jobs) {
@@ -78,10 +97,10 @@ const Reg = () => {
           <Box w='60%' ml='8.9375rem'><Input type="text" borderColor="black" placeholder="Enter Name" size="sm" id="name" name="name" required></Input></Box>
           </Flex>
           <Flex m='5px'> Date of Birth 
-          <Box w='60%' ml='5.9375rem'><Input type="date" borderColor="black" size="sm" name="dob" required></Input></Box>
+          <Box w='60%' ml='5.9375rem'><Input type="date" min='1960-01-01' max = {new Date().toISOString().split("T")[0]} id='dob' borderColor="black" size="sm" name="dob" required></Input></Box>
           </Flex>
           <Flex m='5px'>Age
-          <Box w='60%' ml='9.6875rem'><Input type="text" borderColor="black" placeholder="Enter Age" size="sm" name="age" required></Input></Box>
+          <Box w='60%' ml='9.6875rem'><Input type="text" id="age" onChange={checkAge} borderColor="black" placeholder="Enter Age" size="sm" name="age" required></Input><span color="red" id="error"></span></Box>
           </Flex>
           <Flex m='5px'>Gender
           <Box w='60%' ml='8.125rem'><Select placeholder="Please Select" borderColor="black" size="sm" name="gender">
@@ -166,7 +185,7 @@ const Reg = () => {
           {isError && <Text color='red'>Password doesnot match!</Text>}
           </Box>
           </Flex>
-          {!isError && <Button border="2px solid black"  width="60%" mt="40px" ml='150px' bg={"#2cc0f5"} type="submit"> Submit 
+          {!isError && !isAge && <Button border="2px solid black"  width="60%" mt="40px" ml='150px' bg={"#2cc0f5"} type="submit"> Submit 
           </Button>}
           </Box>
         </form>

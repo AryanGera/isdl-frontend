@@ -4,8 +4,11 @@ import AuthContext from '../context/AuthContext';
 import moment from 'moment';
 
 function UserCard ({post, name}) {
-  let k = post.schedule;
-  let d = k.split('T')[0].split('-');
+  let k=null,d=null;
+  if(post.schedule) {
+    k = post.schedule;
+    d = k.split('T')[0].split('-');
+  }
     let {jobs, spezs} = useContext(AuthContext);
     let arr = [
       { id: 1, dep: "Computer Science and Engineering" },
@@ -20,7 +23,7 @@ function UserCard ({post, name}) {
     console.log(spezs);
     let randi = arr.filter(item => item.id === jobs[0].dept);
       return (
-        <Box bg="#fff" padding="20px" width="450px" height="375px" display="flex"  borderRadius="20px"
+        <Box bg="#fff" padding="20px" width="450px" minHeight="375px" display="flex"  borderRadius="20px"
         boxShadow={"5px 5px 10px "}
         margin="20px"
         border="2px solid black">
