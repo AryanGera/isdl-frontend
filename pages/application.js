@@ -80,7 +80,7 @@ const Application = () => {
             'Content-Type' : 'application/json',
         },
         credentials: 'include',
-        body:JSON.stringify({'id': id})
+        body:JSON.stringify({'id': id, 'meet': meet})
         }
       );
       console.log(response);
