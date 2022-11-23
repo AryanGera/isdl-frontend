@@ -93,7 +93,7 @@ const Admin = () => {
           display="flex"
           flexDirection="column"
         >
-          <Box width="100%" height="60px" bg="#2cc0f5" borderRadius="20px 20px 0px 0px" display="flex" justifyContent="center" textAlign="center" w="100%">
+          <Box width="100%" height="60px" bg="#2cc0f5" borderRadius="20px 20px 0px 0px" display="flex" justifyContent="center" textAlign="center" w="100%" p='15px'>
           <Text fontWeight="600" fontSize="22" textAlign="center" w="100%">
             Create Job{" "}
           </Text>

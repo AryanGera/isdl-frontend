@@ -36,8 +36,9 @@ const Applications = () => {
             width="100%"
             height="100%"
             padding="50px"
+            justifyContent="center"
           >
-            <Box display="flex">
+            <Box display="flex" justifyContent="center">
             <Text fontWeight="bold" fontSize="26" ml="40.625rem" textAlign="center"> Applications </Text>
             <Text m='0.4375rem' ml="21.875rem" fontSize="18" textAlign="center"> Sort by: </Text>
             <Box m='0.3125rem'><Select placeholder="Please Select" size="sm" onChange={Sort}>

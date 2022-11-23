@@ -1,4 +1,4 @@
-import { Box, Button, Text } from '@chakra-ui/react';
+import { Box, Button, Input, Text } from '@chakra-ui/react';
 import React, { useContext, useEffect, useState } from 'react'
 import AuthContext from '../context/AuthContext';
 
@@ -66,7 +66,31 @@ const Application = () => {
       } else {
         console.log('Something went wrong');
       }
+  } 
+
+  async function sendMail(jwt,id) {
+    const response = await fetch(
+        "https://recruitsys.herokuapp.com/sendMail?" +
+          new URLSearchParams({
+            jwt: jwt
+          }),
+        {
+          method: "POST",
+          headers:{
+            'Content-Type' : 'application/json',
+        },
+        credentials: 'include',
+        body:JSON.stringify({'id': id})
+        }
+      );
+      console.log(response);
+      if(response.status === 200) {
+        alert('Sent Mail!');
+      } else {
+        alert('Authentication Failed!');
+      }
   }
+
     useEffect(() => {
         if(localStorage && localStorage.getItem('app')){
             setApp(JSON.parse(localStorage.getItem('app')))
@@ -113,17 +137,17 @@ const Application = () => {
           <form>
           <Text fontWeight="600" fontSize="22" margin="10px"> Schedule Date/Time</Text>
           <input type="datetime-local" name='datetime' id='epic' />
-          <Button border="2px solid black"  width="80%" margin="50px 45px" bg={"#2cc0f5"} onClick={() => Schedule(Jwt,app.id,document.getElementById('epic').value)}> Schedule </Button>
+          <Button border="2px solid black"  width="70%" margin="50px 50px" bg={"#2cc0f5"} onClick={() => Schedule(Jwt,app.id,document.getElementById('epic').value)}> Schedule </Button>
           </form>
           </Box>
           <Box border="1px solid black"  borderRadius="20px" m="30px 10px 0px 10px" h="45%" w="100%" p="20px">
           <form>
+          <Box display="flex" flexDirection="column" justifyContent="center">
           <Text fontWeight="600" fontSize="22" margin="10px" > Meet Link </Text>
-          <Box display="flex">
-          <input type="text" m="10px" id="meet" required/>
+          <Input type="text" m="10px" w="80%" id="meet" borderColor="black" required/>
           {/* <Button border="2px solid black"  width="30%" margin="10px 40px" bg={"#2cc0f5"} onClick={() => setFlag(false)}> Edit </Button> */}
+          <Button border="2px solid black"  width="70%" margin="40px 50px" bg={"#2cc0f5"} onClick={() => sendMail(Jwt,app.id)}> Send Email </Button>
           </Box>
-          <Button border="2px solid black"  width="80%" margin="40px 45px" bg={"#2cc0f5"} type="submit"> Send Email </Button>
           </form>
           </Box>
           </Box>

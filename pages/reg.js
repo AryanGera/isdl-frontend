@@ -45,8 +45,8 @@ const Reg = () => {
     }
     const v = [...new Set(jobs.filter(k => (k.dept === parseInt(router.query.dep) && k.post === router.query.post)))];
     return (
-      <div>
-        <Box w='60%' h='80%' m="2rem 18rem"  bg="#f2f2f2"
+      <Box display="flex" justifyContent="center">
+        <Box w='60%' h='80%'  bg="#f2f2f2" m="20px"
             boxShadow="15px  10px 10px #555555"
             borderRadius="20px" border="2px solid black">
         <Box p="10px 20px">
@@ -60,14 +60,14 @@ const Reg = () => {
           <Box p='2rem'>
           <Flex m='5px'>Specialization
           <Box w='60%' ml='5.3125rem'>
-          <Select placeholder="Please Select" name="spez" size="sm" onChange={(e) => nhp(e)} required>
+          <Select placeholder="Please Select" borderColor="black" name="spez" size="sm" onChange={(e) => nhp(e)} required>
             {v
               .map(p => (
                 spezs.filter(item => item.id === p.spez_Req).map(val => <option key={val.id} value={val.id}>{val.name}</option>)
               ))}
           </Select> </Box> </Flex>
           <Flex m='5px'>Title
-          <Box w='60%' ml='9.6875rem'><Select placeholder="Please Select" size="sm"  name="title" required>
+          <Box w='60%' ml='9.6875rem'><Select borderColor="black" placeholder="Please Select" size="sm"  name="title" required>
             <option value="2" key="title1" name="mr">Mr.</option>
             <option value="1" key="title2" name="mrs">Mrs.</option>
             <option value="4" key="title3" name="ms">Ms.</option>
@@ -75,28 +75,28 @@ const Reg = () => {
           </Select> </Box>
           </Flex>
           <Flex m='5px'>Name
-          <Box w='60%' ml='8.9375rem'><Input type="text" placeholder="Enter Name" size="sm" id="name" name="name" required></Input></Box>
+          <Box w='60%' ml='8.9375rem'><Input type="text" borderColor="black" placeholder="Enter Name" size="sm" id="name" name="name" required></Input></Box>
           </Flex>
           <Flex m='5px'> Date of Birth 
-          <Box w='60%' ml='5.9375rem'><Input type="date" size="sm" name="dob" required></Input></Box>
+          <Box w='60%' ml='5.9375rem'><Input type="date" borderColor="black" size="sm" name="dob" required></Input></Box>
           </Flex>
           <Flex m='5px'>Age
-          <Box w='60%' ml='9.6875rem'><Input type="text" placeholder="Enter Age" size="sm" name="age" required></Input></Box>
+          <Box w='60%' ml='9.6875rem'><Input type="text" borderColor="black" placeholder="Enter Age" size="sm" name="age" required></Input></Box>
           </Flex>
           <Flex m='5px'>Gender
-          <Box w='60%' ml='8.125rem'><Select placeholder="Please Select" size="sm" name="gender">
+          <Box w='60%' ml='8.125rem'><Select placeholder="Please Select" borderColor="black" size="sm" name="gender">
             <option value="M">Male</option>
             <option value="F">Female</option>
           </Select></Box>
           </Flex>
           <Flex m='5px'>Father&#39;s Name
-          <Box w='60%' ml='5rem'><Input type="text" placeholder="Father's Name" size="sm" name="father" required></Input></Box>
+          <Box w='60%' ml='5rem'><Input type="text" borderColor="black" placeholder="Father's Name" size="sm" name="father" required></Input></Box>
           </Flex>
           <Flex m='5px'>Mother&#39;s Name
-          <Box w='60%' ml='4.8125rem'><Input type="text" placeholder="Mother's Name" size="sm" name="mother" required></Input></Box>
+          <Box w='60%' ml='4.8125rem'><Input type="text" borderColor="black" placeholder="Mother's Name" size="sm" name="mother" required></Input></Box>
           </Flex>
           <Flex m='5px'>Category
-          <RadioGroup colorScheme="green" m='0px 6.875rem'>
+          <RadioGroup colorScheme="green" m='0px 6.875rem' >
           <Radio id="st" value="3" name="category" m='0px 10px'>ST</Radio> 
           <Radio id="sc" value="2" name="category" m='0px 10px'>SC</Radio>
           <Radio id="obc" value="4" name="category" m='0px 10px'>OBC</Radio>
@@ -104,7 +104,7 @@ const Reg = () => {
           </RadioGroup>
           </Flex>
           <Flex m='5px'>Nationality
-          <Box w='60%' ml='6.875rem'><Input type="text" placeholder="Nationality" size="sm" name="Nationality" required></Input></Box>
+          <Box w='60%' ml='6.875rem'><Input type="text" borderColor="black" placeholder="Nationality" size="sm" name="Nationality" required></Input></Box>
           </Flex>
           </Box>
           <Box bg="#2cc0f5" p='10px 20px'>
@@ -112,22 +112,22 @@ const Reg = () => {
           </Box>
           <Box p='2rem'>
           <Flex m='5px'>Educational Qualifications
-          <Box w='60%' ml='3.125rem'><Select size="sm" placeholder="Please Select" name="qualifications" required>
+          <Box w='60%' ml='3.125rem'><Select size="sm" borderColor="black" placeholder="Please Select" name="qualifications" required>
             {phdReq===false && qual.map(k => <option key={k.id} value={k.id}>{k.name}</option>)}
             <option key={7} value={7}>PhD</option>
           </Select></Box>
           </Flex>
           <Flex m='5px'> CGPA
-          <Box w='60%' ml='11.875rem'><Input text="number" placeholder={cgpa} max='10' size="sm" name="cgpa" required /></Box>
+          <Box w='60%' ml='11.875rem'><Input text="number" borderColor="black" placeholder={cgpa} max='10' size="sm" name="cgpa" required /></Box>
           </Flex>
           <Flex m='5px'> No. of Citations
-          <Box w='60%' ml='7.8125rem'><Input text="number" placeholder="No. of Citations" size="sm" name="citations" /></Box>
+          <Box w='60%' ml='7.8125rem'><Input text="number" borderColor="black" placeholder="No. of Citations" size="sm" name="citations" /></Box>
           </Flex>
           <Flex m='5px'> No. of Publications
-          <Box w='60%' ml='6.25rem'><Input text="number" placeholder="No. of Publications" size="sm" name="publications" /></Box>
+          <Box w='60%' ml='6.25rem'><Input text="number" borderColor="black" placeholder="No. of Publications" size="sm" name="publications" /></Box>
           </Flex>
           <Flex m='5px'> Experience
-          <Box w='60%' ml='9.6875rem'><Input text="number" placeholder="Enter Experience" size="sm" name="experiance" required /></Box>
+          <Box w='60%' ml='9.6875rem'><Input text="number" borderColor="black" placeholder="Enter Experience" size="sm" name="experiance" required /></Box>
           </Flex>
           </Box>
           <Box bg="#2cc0f5" p='10px 20px'>
@@ -135,34 +135,34 @@ const Reg = () => {
           </Box>
           <Box p='2rem'>
           <Flex m='5px'>Postal Address 
-          <Box w='60%' ml='5.625rem'><Input type="textarea" placeholder="Enter Postal Address" size="sm" name="postal" required /></Box>
+          <Box w='60%' ml='5.625rem'><Input type="textarea" borderColor="black" placeholder="Enter Postal Address" size="sm" name="postal" required /></Box>
           </Flex>
           <Flex m='5px'>Country
-          <Box w='60%' ml='8.75rem'><Input type="text" placeholder="Enter Country" size="sm" name="country" required /></Box>
+          <Box w='60%' ml='8.75rem'><Input type="text" borderColor="black" placeholder="Enter Country" size="sm" name="country" required /></Box>
           </Flex>
           <Flex m='5px'>State 
-          <Box w='60%' ml='9.875rem'><Input type="text" placeholder="Enter State" size="sm" name="state" required /></Box>
+          <Box w='60%' ml='9.875rem'><Input type="text" borderColor="black" placeholder="Enter State" size="sm" name="state" required /></Box>
           </Flex>
           <Flex m='5px'>City
-          <Box w='60%' ml='10.5rem'><Input type="text" placeholder="Enter City" size="sm" name="city" required /></Box>
+          <Box w='60%' ml='10.5rem'><Input type="text" borderColor="black" placeholder="Enter City" size="sm" name="city" required /></Box>
           </Flex>
           <Flex m='5px'>District
-          <Box w='60%' ml='9.0625rem'><Input type="text" placeholder="Enter District" size="sm" name="district" required /></Box>
+          <Box w='60%' ml='9.0625rem'><Input type="text" borderColor="black" placeholder="Enter District" size="sm" name="district" required /></Box>
           </Flex>
           <Flex m='5px'>Pincode
-          <Box w='60%' ml='8.4375rem'><Input type="text" pattern="[1-9]{1}[0-9]{5}" placeholder="Enter Pincode" size="sm" name="pincode" maxlength="6" required /></Box>
+          <Box w='60%' ml='8.4375rem'><Input type="text" borderColor="black" pattern="[1-9]{1}[0-9]{5}" placeholder="Enter Pincode" size="sm" name="pincode" maxlength="6" required /></Box>
           </Flex>
           <Flex m='5px'>Email
-          <Box w='60%' ml='153px'><Input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter Email" size="sm" name="email" required /> </Box>
+          <Box w='60%' ml='153px'><Input type="email" borderColor="black" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" placeholder="Enter Email" size="sm" name="email" required /> </Box>
           </Flex>
           <Flex m='5px'>Mobile No
-          <Box w='60%' ml='120px'><Input type="text" placeholder="Enter Mobile.No" size="sm" name="mob_num" pattern="[1-9]{1}[0-9]{9}" maxlength="10" required /> </Box>
+          <Box w='60%' ml='120px'><Input type="text" borderColor="black" placeholder="Enter Mobile.No" size="sm" name="mob_num" pattern="[1-9]{1}[0-9]{9}" maxlength="10" required /> </Box>
           </Flex>
           <Flex m='5px'>Password
-          <Box w='60%' ml='7.625rem'><Input type="password" placeholder="Enter Password" maxlength="20" id='pass' size="sm" name="password" required onChange={() => setPass(document.getElementById('pass').value)} /></Box>
+          <Box w='60%' ml='7.625rem'><Input type="password" borderColor="black" placeholder="Enter Password" maxlength="20" id='pass' size="sm" name="password" required onChange={() => setPass(document.getElementById('pass').value)} /></Box>
           </Flex>
           <Flex m='5px'>Re-type Password
-          <Box w='60%' ml='3.875rem'><Input type="password" id='retype' placeholder="Re-type Password" size="sm" name="password" required onChange={(e) => checkPass(e)} />
+          <Box w='60%' ml='3.875rem'><Input type="password" borderColor="black" id='retype' placeholder="Re-type Password" size="sm" name="password" required onChange={(e) => checkPass(e)} />
           {isError && <Text color='red'>Password doesnot match!</Text>}
           </Box>
           </Flex>
@@ -171,7 +171,7 @@ const Reg = () => {
           </Box>
         </form>
         </Box>
-      </div>
+      </Box>
     );
   }
 };
