@@ -88,7 +88,7 @@ export const AuthProvider = ({children}) =>{
       const jobid = localStorage.getItem('jobid');
       const formData = new FormData(e.target);
         const data = Object.fromEntries(formData.entries());
-        Object.assign(data, {job: jobid});
+        Object.assign(data, {job: jobid, meet: 'https://meet.google.com/bos-etyf-oea'});
         console.log(data);
         let response = await fetch("https://recruitsys.herokuapp.com/registerApp", {
           method: "POST",
@@ -103,7 +103,7 @@ export const AuthProvider = ({children}) =>{
           alert('Registered Successfully');
           router.push("/login");
         } else {
-          alert(res.condition);
+          alert(res.error);
         }
     };
 
@@ -132,7 +132,7 @@ export const AuthProvider = ({children}) =>{
             preReq();
             alert('Job Created!');
           } else {
-            alert(res.auth);
+            alert(res.error);
           }
       };
 
