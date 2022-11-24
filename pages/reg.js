@@ -137,16 +137,16 @@ const Reg = () => {
           </Select></Box>
           </Flex>
           <Flex m='5px'> CGPA
-          <Box w='60%' ml='11.875rem'><Input text="number" borderColor="black" placeholder={cgpa} min='0' max='10' size="sm" step='0.01' name="cgpa" required /></Box>
+          <Box w='60%' ml='11.875rem'><Input type="number" borderColor="black" placeholder={cgpa} min='0' max='10' size="sm" step='0.01' name="cgpa" required /></Box>
           </Flex>
           <Flex m='5px'> No. of Citations
-          <Box w='60%' ml='7.8125rem'><Input text="number" min='0'  max='200' borderColor="black" placeholder="No. of Citations, Max: 200" size="sm" name="citations" required/></Box>
+          <Box w='60%' ml='7.8125rem'><Input type="number" min='0'  max='200' borderColor="black" placeholder="No. of Citations, Max: 200" size="sm" name="citations" required/></Box>
           </Flex>
           <Flex m='5px'> No. of Publications
-          <Box w='60%' ml='6.25rem'><Input text="number" min='0' max='50' borderColor="black" placeholder="No. of Publications, Max: 50" size="sm" name="publications" required/></Box>
+          <Box w='60%' ml='6.25rem'><Input type="number" min='0' max='50' borderColor="black" placeholder="No. of Publications, Max: 50" size="sm" name="publications" required/></Box>
           </Flex>
           <Flex m='5px'> Experience
-          <Box w='60%' ml='9.6875rem'><Input text="number" min='0' max='30' borderColor="black" placeholder="Enter Experience, Max: 30" size="sm" name="experiance" required /></Box>
+          <Box w='60%' ml='9.6875rem'><Input type="number" min='0' max='30' borderColor="black" placeholder="Enter Experience, Max: 30" size="sm" name="experiance" required /></Box>
           </Flex>
           </Box>
           <Box bg="#89CFF0" p='10px 20px'>
