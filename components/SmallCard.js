@@ -25,8 +25,8 @@ function SmallCard ({app}) {
       return (
         <Box padding="20px" width="350px" height="325px" display="flex"  borderRadius="20px"
             boxShadow={"5px 5px 10px green"}
-            margin="30px" bg="#2cc0f5"  
-            border="2px solid black">
+            margin="30px" bg="#89CFF0"  
+            >
                 <Box width="100%" height="100%"  borderRadius="20px" padding="30px 10px"  >
                     <Text fontWeight="600" fontSize="16" margin="10px"> Name: {app.name} </Text>
                     <Text fontWeight="600" fontSize="16" margin="10px"> Qualifications: {q[0].name} </Text>
@@ -43,8 +43,7 @@ function SmallCard ({app}) {
       return (
         <Box padding="20px" width="350px" height="325px" display="flex"  borderRadius="20px"
         boxShadow={"5px 5px 10px"}
-        margin="30px" bg="#2cc0f5"  
-            border="2px solid black">
+        margin="30px" bg="#89CFF0">
                 <Box width="100%" height="100%"  borderRadius="20px" padding="30px 10px">
                     <Text fontWeight="600" fontSize="16" margin="10px"> Name: {app.name} </Text>
                     <Text fontWeight="600" fontSize="16" margin="10px"> Qualifications: {q[0].name} </Text>

@@ -118,8 +118,8 @@ const Application = () => {
     const spez = spezs.filter(item => item.id === parseInt(app.spez));
     const q = qual.filter(k => k.id === app.qualifications);
     return (
-      <Box width="80%" height="90%" display="flex" bg="rgba(11, 127, 171, 0.1)" border="1px solid black" borderRadius="20px" m='1rem 10rem' padding="30px">
-        <Box width="50%" bg='#ffffe5'  borderRadius="20px" mr="25px" p="10px" boxShadow={"5px 5px 10px"}>
+      <Box width="80%" height="90%" display="flex" borderRadius="20px" m='1rem 10rem' padding="30px">
+        <Box width="50%" bg='  #a9d7e8'  borderRadius="20px" mr="25px" p="10px" boxShadow={"5px 5px 10px"}>
                     <Text fontWeight="600" fontSize="22" margin="10px"> Name: {app.name} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> Qualifications: {q[0].name} </Text>
                     <Text fontWeight="600" fontSize="22" margin="10px"> Specialization: {spez[0].name} </Text>
@@ -132,7 +132,7 @@ const Application = () => {
                     <Text fontWeight="600" fontSize="22" margin="10px"> Round Num: {cnt} </Text>
                     {sch && <Text fontWeight="600" fontSize="22" margin="10px"> Schedule: Date: {d[2]+'/'+d[1]+'/'+d[0]} Time: {sch.split('T')[1].split('Z')[0]} </Text>}
                     <Text fontWeight="600" fontSize="22" margin="10px"> Meet Link: {meet} </Text>
-                    <Button border="2px solid black"  width="60%" margin="50px 100px" bg={"#2cc0f5"} onClick={() => nextRound(Jwt,app.id)}> Next Round 
+                    <Button  width="60%" margin="50px 100px" bg={"#3A8891"} onClick={() => nextRound(Jwt,app.id)}> Next Round 
                     </Button>
                     </Box>}
                     {cnt > 4 && <Box>
@@ -140,22 +140,22 @@ const Application = () => {
                     </Box>}
                 </Box>
           <Box>
-          <Box bg='#ffffe5' boxShadow={"5px 5px 10px"} borderRadius="20px" m="10px" h="45%" w='100%' p="20px">
+          <Box bg='  #a9d7e8' boxShadow={"5px 5px 10px"} borderRadius="20px" m="10px" h="45%" w='100%' p="20px">
           <form>
           <Text fontWeight="600" fontSize="22" margin="10px"> Schedule Date/Time</Text>
           <Input type="datetime-local" name='datetime' 
           min = {new Date().toISOString().split('T')[0]+'T' + new Date().toISOString().split('T')[1].slice(0,5)} 
           id='epic' />
-          <Button border="2px solid black"  width="70%" margin="50px 50px" bg={"#2cc0f5"} onClick={() => Schedule(Jwt,app.id,document.getElementById('epic').value)}> Schedule </Button>
+          <Button  width="70%" margin="50px 50px" bg={"#3A8891"} onClick={() => Schedule(Jwt,app.id,document.getElementById('epic').value)}> Schedule </Button>
           </form>
           </Box>
-          <Box bg='#ffffe5' boxShadow={"5px 5px 10px"} borderRadius="20px" m="30px 10px 0px 10px" h="45%" w="100%" p="20px">
+          <Box bg='  #a9d7e8' boxShadow={"5px 5px 10px"} borderRadius="20px" m="30px 10px 0px 10px" h="45%" w="100%" p="20px">
           <form>
           <Box display="flex" flexDirection="column" justifyContent="center">
           <Text fontWeight="600" fontSize="22" margin="10px" > Meet Link </Text>
           <Input type="text" m="10px" w="80%" id="meet" borderColor="black" required/>
           {/* <Button border="2px solid black"  width="30%" margin="10px 40px" bg={"#2cc0f5"} onClick={() => setFlag(false)}> Edit </Button> */}
-          {sch && <Button border="2px solid black"  width="70%" margin="40px 50px" bg={"#2cc0f5"} onClick={() => sendMail(Jwt,app.id,document.getElementById('meet').value)}> Send Email </Button>}
+          {sch && <Button  width="70%" margin="40px 50px" bg={"#3A8891"} onClick={() => sendMail(Jwt,app.id,document.getElementById('meet').value)}> Send Email </Button>}
           </Box>
           </form>
           </Box>

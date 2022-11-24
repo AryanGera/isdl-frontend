@@ -41,12 +41,12 @@ const JobCard = ({job}) => {
   }
     if(job) {
         return (
-            <Box display="flex"  border="1px solid black" bg="#2cc0f5" borderRadius="0.9375rem" margin="0.3125rem">
+            <Box display="flex" bg="#71C9CE" borderRadius="0.9375rem" margin="0.3125rem">
                 <Text fontWeight="600" fontSize="15" margin="0.625rem" w="30%"> {job.post} </Text>
                 <Text fontWeight="600" fontSize="15" margin="0.625rem" w="30%"> {spez[0].name} </Text>
-                <Button height="1.375rem"  width="10%" margin="0.625rem" bg={"#4BB543"} onClick={() => openApp()}> Open 
+                <Button height="1.375rem"  width="10%" margin="0.625rem" bg="rgba(75, 181, 67,0.9)" onClick={() => openApp()}> Open 
                 </Button>
-                <Button height="1.375rem"  width="10%" margin="0.625rem"  bg={"#d11a2a"} onClick={() => deleteJob(Jwt,job.id)}> Close 
+                <Button height="1.375rem"  width="10%" margin="0.625rem"  bg="rgba(244, 67, 54,0.9)" onClick={() => deleteJob(Jwt,job.id)}> Close 
                 </Button>
             </Box>
           )

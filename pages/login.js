@@ -34,7 +34,7 @@ const Login = () => {
     return (
       <Box display="flex" p='3.125rem 5.625rem' justifyContent="space-evenly">
           <Box
-          bg="#2cc0f5"
+          bg="#71C9CE"
           borderRadius={"20px"}
           boxShadow={"15px  10px 10px #555555"}
           border={"2px solid black"} 
@@ -44,7 +44,7 @@ const Login = () => {
               Faculty Recruitment
             </Text>
               <p>Select Discipline / Broad area :</p>
-              <Select value={value} onChange={(e) => {
+              <Select borderColor="black"  value={value} onChange={(e) => {
             setValue(e.target.value);}}>
               <option value='default'>Select Option</option>
               {unique
@@ -58,7 +58,7 @@ const Login = () => {
           <Box
             display="flex"
             flexDirection={"column"}
-            bg="#2cc0f5"
+            bg="#71C9CE"
             borderRadius={"20px"}
             boxShadow={"15px  10px 10px #555555"}
             border={"2px solid black"}
@@ -76,7 +76,7 @@ const Login = () => {
                 <FormLabel>Password</FormLabel>
                 <Input type="password" backgroundColor="white" name="password" required/>
               </FormControl>
-              <Button border="2px solid black"  width="100%" marginTop="50px" bg={"#ff9800"} type="submit">
+              <Button  width="100%" marginTop="50px" bg={"rgba(255, 152, 0,0.9)"} type="submit">
                   Submit
                 </Button>
             </form>
