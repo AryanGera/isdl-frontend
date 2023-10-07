@@ -74,7 +74,7 @@ const Applications = () => {
         } else {
           (async () => {
             const resp1 = await fetch(
-              "https://recruitsys.herokuapp.com/fetchApp?" +
+              "https://recruitsys.onrender.com/fetchApp?" +
                 new URLSearchParams({ jwt: Jwt, id: id }),
               {
                 method: "GET",
